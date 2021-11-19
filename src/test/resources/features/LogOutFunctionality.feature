@@ -38,3 +38,5 @@ Feature: As a user I should be able to log out
         | sales manager | salesmanager103 | UserUser123 |
         | store manager | storemanager85  | UserUser123 |
 
+askjdhdksklcx
+    nmxznjcxkmxklc lv'xc

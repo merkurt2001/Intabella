@@ -6,7 +6,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import java.awt.AWTException;
+import java.awt.event.KeyEvent;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -376,6 +378,29 @@ public class BrowserUtils {
     }
 
 
+    public static void pressKeyboardKey(String keyInput, int iterations) throws AWTException {
+        try {
+
+
+            Robot robot = new Robot();
+            for (int i = 0; i < iterations; i++) {
+                switch (keyInput) {
+                    case "TAB":
+                        robot.keyPress(KeyEvent.VK_TAB);
+                        robot.keyRelease(KeyEvent.VK_TAB);
+                        break;
+                    case "ENTER":
+                        robot.keyPress(KeyEvent.VK_ENTER);
+                        robot.keyRelease(KeyEvent.VK_ENTER);
+                        break;
+
+                }
+
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
 }
 

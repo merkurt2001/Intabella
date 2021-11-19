@@ -1,5 +1,6 @@
 package com.intabella.pages;
 
+import com.intabella.utilities.BrowserUtils;
 import com.intabella.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,8 +15,6 @@ public class LoginPage {
     @FindBy(id="prependedInput")
     public WebElement userName;
 
-
-
     @FindBy(id="prependedInput2")
     public WebElement password;
 
@@ -25,11 +24,26 @@ public class LoginPage {
     @FindBy(xpath = "//div[@class='alert alert-error']")
     public WebElement message;
 
+   @FindBy(xpath = "//*[@class='dropdown-toggle']")
+   public WebElement JonDoeDropDown;
+
+   @FindBy(linkText = "Logout")
+   public WebElement logout;
+
+   public void logOutUser(){
+       JonDoeDropDown.click();
+       BrowserUtils.waitFor(5);
+       logout.click();
+   }
+
     public String getMessage(){
         return message.getText();
     }
 
+    public String getAtribute(){
 
+        return userName.getAttribute("validationMessage");
+    }
 
     public void login(String userNameStr, String passwordStr) {
         userName.sendKeys(userNameStr);
@@ -37,4 +51,6 @@ public class LoginPage {
         submit.click();
         // verification that we logged
     }
+
+
 }

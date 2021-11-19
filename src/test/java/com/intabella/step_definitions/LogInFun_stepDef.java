@@ -11,6 +11,8 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 
+import java.awt.*;
+
 public class LogInFun_stepDef {
 
     @Given("the user is on the login page")
@@ -27,10 +29,11 @@ public class LogInFun_stepDef {
     }
 
     @Then("the {string} should land on {string}")
-    public void the_should_land_on(String userType, String land){
+    public void the_should_land_on(String userType, String land)throws Exception{
         DashboardPage dashboardPage = new DashboardPage();
         String pageSubTitle = dashboardPage.getPageSubTitle();
         Assert.assertEquals(land,pageSubTitle);
     }
+
 
 }

@@ -379,9 +379,8 @@ public class BrowserUtils {
 
 
     public static void pressKeyboardKey(String keyInput, int iterations) throws AWTException {
+
         try {
-
-
             Robot robot = new Robot();
             for (int i = 0; i < iterations; i++) {
                 switch (keyInput) {
@@ -395,7 +394,6 @@ public class BrowserUtils {
                         break;
 
                 }
-
             }
         }catch (Exception e){
             e.printStackTrace();

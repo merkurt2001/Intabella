@@ -32,7 +32,7 @@ public class LoginPage {
 
    public void logOutUser(){
        JonDoeDropDown.click();
-       BrowserUtils.waitFor(5);
+       BrowserUtils.waitFor(2);
        logout.click();
    }
 

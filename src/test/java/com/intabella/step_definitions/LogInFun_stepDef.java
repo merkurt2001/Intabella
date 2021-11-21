@@ -18,6 +18,7 @@ public class LogInFun_stepDef {
 
     @Given("the user is on the login page")
     public void the_user_is_on_the_login_page() {
+
         String url = ConfigurationReader.get("url");
         Driver.get().get(url);
     }
@@ -26,11 +27,11 @@ public class LogInFun_stepDef {
     public void the_enters_the_username_and_password_information(String userType, String username,
                                                                  String password) {
         new LoginPage().login(username,password);
-
     }
 
     @Then("the {string} should land on {string}")
     public void the_should_land_on(String userType, String land)throws Exception{
+
         DashboardPage dashboardPage = new DashboardPage();
         String pageSubTitle = dashboardPage.getPageSubTitle();
         Assert.assertEquals(land,pageSubTitle);
@@ -55,6 +56,7 @@ public class LogInFun_stepDef {
     @When("the user log out")
     public void the_user_log_out() {
 
+        new DashboardPage().waitUntilLoaderScreenDisappear();
         new LoginPage().logOutUser();
         String actualTitle = Driver.get().getTitle();
         String expectedTitle = "Login";
@@ -81,6 +83,7 @@ public class LogInFun_stepDef {
 
     @When("the user logs in using following credentials {string} and {string}")
     public void the_user_logs_in_using_following_credentials_and(String username, String password) {
+
         String url = ConfigurationReader.get("url");
         Driver.get().get(url);
         BrowserUtils.waitFor(2);
@@ -97,8 +100,8 @@ public class LogInFun_stepDef {
                 String msg = loginPage.getMessage();
                 System.out.println("msg = " + msg);
                 Assert.assertEquals(message, msg);
-
                 break;
+
             case "Please fill in this field.":
 
 //                if (loginPage.userName.getAttribute("value") == null &&
@@ -110,9 +113,7 @@ public class LogInFun_stepDef {
                     Assert.assertEquals(message, loginPage.password.getAttribute("validationMessage"));
                 }
                 break;
-
         }
-
     }
 
     @When("typing anything {string} in the password input box")
@@ -132,7 +133,6 @@ public class LogInFun_stepDef {
     public void the_user_click_on_the_Forgot_Passord() {
 
         Driver.get().findElement(By.linkText("Forgot your password?")).click();
-
     }
 
     @Then("the user should land on the Forgot Password page")

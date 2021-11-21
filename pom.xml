@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.intabella</groupId>
-    <artifactId>EU6CucumberSelenium</artifactId>
+    <artifactId>Intabella</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

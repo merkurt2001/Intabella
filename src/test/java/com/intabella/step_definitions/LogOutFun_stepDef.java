@@ -30,7 +30,7 @@ public class LogOutFun_stepDef {
     public void the_user_close_the_current_tab_or_all_the_others() {
 
         String url = Driver.get().getCurrentUrl();
-        Driver.get().close();
+        Driver.closeDriver();
     }
 
     @Then("user should loged out")

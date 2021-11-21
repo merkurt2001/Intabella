@@ -26,7 +26,7 @@ Feature: As a user I should be able to log out
         | store manager | storemanager85  | UserUser123 |
 
   @wip
-    Scenario Outline: user should log out if cole the open tab <userType>
+    Scenario Outline: user should log out if close the open tab <userType>
       Given the user is on the login page
       And the "<userType>" enters the username "<username>" and password "<password>" information
       When the user close the current tab or all the others

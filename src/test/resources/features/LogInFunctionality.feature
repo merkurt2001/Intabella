@@ -75,10 +75,12 @@ Feature: All users can log in with valid credentials
 		Given the user is on the login page
 		When the user click on the Forgot Passord
 		Then the user should land on the Forgot Password page
+
 	@INN-902
 	Scenario: user can see Remember me and it should be clickable
 		Given the user is on the login page
 		And the user should see the Remember me and should be able to clcik
+
 	@INN-903
 	Scenario: verify that user can use Enter key from keyboard
 		Given the user is on the login page

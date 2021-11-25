@@ -12,9 +12,12 @@ import java.util.List;
 public class GeneralInfoPage extends BasePage{
 
     public void TheUserShouldSeeGIP(){
-        BrowserUtils.waitFor(10);
+
+        new DashboardPage().waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitFor(3);
 
         List<WebElement> row = Driver.get().findElements(By.xpath("//table[1]/tbody/tr"));
+
         for (int i = 1; i < row.size(); i++) {
             WebElement row1 = Driver.get().findElement(By.xpath("//table[1]/tbody/tr[" + i + "]"));
             row1.click();
@@ -27,5 +30,30 @@ public class GeneralInfoPage extends BasePage{
             BrowserUtils.waitFor(3);
         }
         new LoginPage().logOutUser();
+    }
+
+    public void clickEye(){
+
+        DashboardPage dashboardPage = new DashboardPage();
+        dashboardPage.waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitFor(3);
+        List<WebElement> cell = Driver.get().findElements(By.xpath("//table[1]/tbody/tr"));
+
+        for (int i = 1; i < cell.size(); i++) {
+
+            WebElement dots = Driver.get().findElement(By.xpath("//table[1]/tbody/tr["+i+"]/td[20]"));
+            BrowserUtils.doubleClick(dots);
+            dashboardPage.waitUntilLoaderScreenDisappear();
+            WebElement eye = Driver.get().findElement(By.xpath("//*[@class='fa-eye hide-text']"));
+            eye.click();
+            dashboardPage.waitUntilLoaderScreenDisappear();
+            BrowserUtils.waitFor(3);
+            WebElement gi = Driver.get().findElement(By.xpath("//*[@class='user-fieldset']"));
+            String actualPage = gi.getText();
+            String expectedPage = "General Information";
+            Assert.assertEquals(expectedPage,actualPage);
+            Driver.get().navigate().back();
+            BrowserUtils.waitFor(3);
+        }
     }
 }

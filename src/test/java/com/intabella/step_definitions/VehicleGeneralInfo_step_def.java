@@ -3,8 +3,15 @@ package com.intabella.step_definitions;
 import com.intabella.pages.DashboardPage;
 import com.intabella.pages.GeneralInfoPage;
 import com.intabella.pages.LoginPage;
+import com.intabella.utilities.BrowserUtils;
 import com.intabella.utilities.ConfigurationReader;
+import com.intabella.utilities.Driver;
 import io.cucumber.java.en.Given;
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class VehicleGeneralInfo_step_def {
 
@@ -36,10 +43,16 @@ public class VehicleGeneralInfo_step_def {
         new DashboardPage().navigateToModule(tab, module);
     }
 
-    @Given("the user should see the General Information page on any vehcle")
-    public void the_user_should_see_the_General_Information_page_on_any_vehcle_row() {
+    @Given("the user should see the General Information page on any vehicle")
+    public void the_user_should_see_the_General_Information_page_on_any_vehicle() {
 
         new GeneralInfoPage().TheUserShouldSeeGIP();
+    }
+
+    @Given("the user can see the General Information page by clicking the Eye icon")
+    public void the_user_can_see_the_General_Information_page_by_clicking_the_Eye_icon() {
+
+        new GeneralInfoPage().clickEye();
     }
 
 }

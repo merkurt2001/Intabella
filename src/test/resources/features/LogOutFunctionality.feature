@@ -1,7 +1,7 @@
 @INN-920
 Feature: As a user I should be able to log out
 
-	@INN-917 @wip
+	@INN-917
 	Scenario Outline: User can log out <userType>
 		Given the user is on the login page
 		And the "<userType>" enters the username "<username>" and password "<password>" information

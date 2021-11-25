@@ -12,6 +12,8 @@ public class LoginPage {
         PageFactory.initElements(Driver.get(), this);
     }
 
+    //Test Control1
+
     @FindBy(id="prependedInput")
     public WebElement userName;
 

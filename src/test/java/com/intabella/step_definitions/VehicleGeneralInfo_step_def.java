@@ -7,10 +7,15 @@ import com.intabella.utilities.BrowserUtils;
 import com.intabella.utilities.ConfigurationReader;
 import com.intabella.utilities.Driver;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class VehicleGeneralInfo_step_def {
@@ -43,8 +48,8 @@ public class VehicleGeneralInfo_step_def {
         new DashboardPage().navigateToModule(tab, module);
     }
 
-    @Given("the user should see the General Information page on any vehicle")
-    public void the_user_should_see_the_General_Information_page_on_any_vehicle() {
+    @Given("the user should see the General Information by clicking on any vehicle row")
+    public void the_user_should_see_the_General_Information_by_clicking_on_any_vehicle_row() {
 
         new GeneralInfoPage().TheUserShouldSeeGIP();
     }
@@ -55,4 +60,55 @@ public class VehicleGeneralInfo_step_def {
         new GeneralInfoPage().clickEye();
     }
 
+    @When("the {string} clicks on any vehicle row and he lands to the General Information page he should see the Delete Edit and Add Event buttons")
+    public void the_clicks_on_any_vehicle_row_and_he_lands_to_the_General_Information_page_he_should_see_the_Delete_Edit_and_Add_Event_buttons(String string) {
+
+        new DashboardPage().waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitFor(3);
+
+        WebElement row = Driver.get().findElement(By.xpath("//table[1]/tbody/tr[1]"));
+        row.click();
+        BrowserUtils.waitFor(5);
+//        WebElement edit = Driver.get().findElement(By.xpath("(//i[@class='fa-pencil-square-o hide-text'])[1]"));
+//        System.out.println("edit.getText() = " + edit.getText());
+    }
+
+    @When("the user by clicking on any vehicle row navigates to General Information page")
+    public void the_user_by_clicking_on_any_vehicle_row_navigates_to_General_Information_page() {
+
+        new GeneralInfoPage().navigateToGIP();
+    }
+
+    @Then("the user should not have any Add Event Edit Delete buttons")
+    public void the_user_should_not_have_any_Add_Event_Edit_Delete_buttons() {
+
+        new GeneralInfoPage().shouldNotHaveAddEventBtn();
+    }
+
+    @Given("information should be the same")
+    public void information_should_be_the_same() {
+        DashboardPage dashboardPage = new DashboardPage();
+        dashboardPage.waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitFor(3);
+        List<WebElement> infoRow = Driver.get().findElements(By.xpath("//table[1]/tbody/tr"));
+        List<String> allInfoRow = new ArrayList<>();
+        List<String> GIPInfoPage = new ArrayList<>();
+        for (int i = 1; i < infoRow.size()-1; i++) {
+             List<WebElement> rowCellInfo = Driver.get().findElements(By.xpath("//table[1]/tbody/tr["+i+"]/td"));
+            for (WebElement element : rowCellInfo) {
+                allInfoRow.add(element.getText());
+            }
+            Driver.get().findElement(By.xpath("//table[1]/tbody/tr["+i+"]/td")).click();
+            dashboardPage.waitUntilLoaderScreenDisappear();
+            BrowserUtils.waitFor(3);
+            List<WebElement> GIPInfo = Driver.get().findElements(By.xpath("//div[@class='control-group attribute-row']"));
+            for (int j = 1; j < GIPInfo.size()-3; j++) {
+                 GIPInfoPage.add(GIPInfo.get(j).getText());
+            }
+            Assert.assertEquals(allInfoRow,GIPInfoPage);
+            Driver.get().navigate().back();
+            BrowserUtils.waitFor(2);
+        }
+        new LoginPage().logOutUser();
+    }
 }

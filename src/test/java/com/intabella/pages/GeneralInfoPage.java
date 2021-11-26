@@ -48,12 +48,28 @@ public class GeneralInfoPage extends BasePage{
             eye.click();
             dashboardPage.waitUntilLoaderScreenDisappear();
             BrowserUtils.waitFor(3);
-            WebElement gi = Driver.get().findElement(By.xpath("//*[@class='user-fieldset']"));
+            WebElement gi = Driver.get().findElement(By.xpath("//i[@class='fa-clock-o hide-text']"));
             String actualPage = gi.getText();
             String expectedPage = "General Information";
             Assert.assertEquals(expectedPage,actualPage);
             Driver.get().navigate().back();
             BrowserUtils.waitFor(3);
         }
+    }
+
+    public void navigateToGIP(){
+        new DashboardPage().waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitFor(3);
+
+        WebElement row = Driver.get().findElement(By.xpath("//table[1]/tbody/tr[1]"));
+        row.click();
+    }
+
+    public void shouldNotHaveAddEventBtn(){
+        new DashboardPage().waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitFor(3);
+        WebElement addEventBtn = Driver.get().findElement(By.xpath("//i[@class='fa-clock-o hide-text']"));
+        String expectedTxt = "Add Event";
+        Assert.assertEquals(expectedTxt,addEventBtn.getText());
     }
 }

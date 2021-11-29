@@ -86,6 +86,7 @@ public class VehicleGeneralInfo_step_def {
 
     @Given("information should be the same")
     public void information_should_be_the_same() {
+
         new GeneralInfoPage().InfoShouldBeTheSame();
     }
 

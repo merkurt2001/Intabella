@@ -51,7 +51,7 @@ public class VehicleGeneralInfo_step_def {
         WebElement row = Driver.get().findElement(By.xpath("//table[1]/tbody/tr[1]"));
         row.click();
         BrowserUtils.waitFor(5);
-        ///maked some final changes
+
     }
 
     @When("the user by clicking on any vehicle row navigates to General Information page")

@@ -21,22 +21,7 @@ public class VehicleGeneralInfo_step_def {
     @Given("the user logged in as {string}")
     public void the_user_logged_in_as(String userType) {
 
-        String username = null;
-        String password = null;
-
-        if (userType.equals("driver")) {
-            username = ConfigurationReader.get("driver_username");
-            password = ConfigurationReader.get("driver_password");
-        } else if (userType.equals("sales manager")) {
-            username = ConfigurationReader.get("salesmanager_username");
-            password = ConfigurationReader.get("salesmanager_password");
-        } else if (userType.equals("store manager")) {
-            username = ConfigurationReader.get("storemanager_username");
-            password = ConfigurationReader.get("storemanager_password");
-        } else {
-            System.out.println("Invalid user");
-        }
-        new LoginPage().login(username, password);
+        new LoginPage().logInAsdifferntUser(userType);
     }
 
     @Given("the user clicks on the {string} tab {string} module")
@@ -64,12 +49,9 @@ public class VehicleGeneralInfo_step_def {
 
         new DashboardPage().waitUntilLoaderScreenDisappear();
         BrowserUtils.waitFor(3);
-
         WebElement row = Driver.get().findElement(By.xpath("//table[1]/tbody/tr[1]"));
         row.click();
         BrowserUtils.waitFor(5);
-//        WebElement edit = Driver.get().findElement(By.xpath("(//i[@class='fa-pencil-square-o hide-text'])[1]"));
-//        System.out.println("edit.getText() = " + edit.getText());
     }
 
     @When("the user by clicking on any vehicle row navigates to General Information page")

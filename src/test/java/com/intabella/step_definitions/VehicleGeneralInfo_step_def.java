@@ -21,9 +21,7 @@ public class VehicleGeneralInfo_step_def {
     @Given("the user logged in as {string}")
     public void the_user_logged_in_as(String userType) {
 
- Almpano_Vehicle_General_Information
         new LoginPage().logInAsdifferntUser(userType);
-
     }
 
     @Given("the user clicks on the {string} tab {string} module")
@@ -31,7 +29,6 @@ public class VehicleGeneralInfo_step_def {
 
         new DashboardPage().waitUntilLoaderScreenDisappear();
         new DashboardPage().navigateToModule(tab, module);
-
     }
 
     @Given("the user should see the General Information by clicking on any vehicle row")
@@ -54,6 +51,7 @@ public class VehicleGeneralInfo_step_def {
         WebElement row = Driver.get().findElement(By.xpath("//table[1]/tbody/tr[1]"));
         row.click();
         BrowserUtils.waitFor(5);
+        ///maked some final changes
     }
 
     @When("the user by clicking on any vehicle row navigates to General Information page")

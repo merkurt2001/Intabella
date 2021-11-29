@@ -99,4 +99,8 @@ public class GeneralInfoPage extends BasePage{
         }
         new LoginPage().logOutUser();
     }
+
+    public void JustForfixingTheConfilct(){
+        System.out.println("fixing it");
+    }
 }

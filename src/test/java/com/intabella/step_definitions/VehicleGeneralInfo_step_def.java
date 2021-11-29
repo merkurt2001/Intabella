@@ -24,11 +24,12 @@ public class VehicleGeneralInfo_step_def {
         new LoginPage().logInAsdifferntUser(userType);
     }
 
-    @Given("the user clicks on the {string} tab {string} module")
-    public void the_user_clicks_on_the_module(String tab, String module) {
+    @Given("the user click on the {string} tab {string} module as user {string}")
+    public void the_user_click_on_the_tab_module_as_user(String tab, String module, String UserType) {
+        DashboardPage dashboardPage = new DashboardPage();
+        dashboardPage.waitUntilLoaderScreenDisappear();
+        dashboardPage.navigateToModule(tab,module,UserType);
 
-        new DashboardPage().waitUntilLoaderScreenDisappear();
-        new DashboardPage().navigateToModule(tab, module);
     }
 
     @Given("the user should see the General Information by clicking on any vehicle row")

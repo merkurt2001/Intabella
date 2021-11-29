@@ -52,7 +52,6 @@ public  class LoginPage {
         // verification that we logged
     }
 
- Almpano_Vehicle_General_Information
     public void logInAsdifferntUser(String userType){
 
         String username = null;
@@ -72,7 +71,5 @@ public  class LoginPage {
         }
         new LoginPage().login(username, password);
     }
- Almpano_Vehicle_General_Information
-
 
 }

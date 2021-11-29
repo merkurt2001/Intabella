@@ -21,7 +21,9 @@ public class VehicleGeneralInfo_step_def {
     @Given("the user logged in as {string}")
     public void the_user_logged_in_as(String userType) {
 
+ Almpano_Vehicle_General_Information
         new LoginPage().logInAsdifferntUser(userType);
+
     }
 
     @Given("the user clicks on the {string} tab {string} module")
@@ -68,6 +70,7 @@ public class VehicleGeneralInfo_step_def {
 
     @Given("information should be the same")
     public void information_should_be_the_same() {
+
         new GeneralInfoPage().InfoShouldBeTheSame();
     }
 

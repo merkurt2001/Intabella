@@ -13,10 +13,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class VehicleGeneralInfo_step_def {
@@ -42,7 +39,7 @@ public class VehicleGeneralInfo_step_def {
         new LoginPage().login(username, password);
     }
 
-    @Given("the user clicks on the {string} {string} module")
+    @Given("the user clicks on the {string} tab {string} module")
     public void the_user_clicks_on_the_module(String tab, String module) {
 
         new DashboardPage().waitUntilLoaderScreenDisappear();
@@ -89,29 +86,7 @@ public class VehicleGeneralInfo_step_def {
 
     @Given("information should be the same")
     public void information_should_be_the_same() {
-        DashboardPage dashboardPage = new DashboardPage();
-        dashboardPage.waitUntilLoaderScreenDisappear();
-        BrowserUtils.waitFor(3);
-        List<WebElement> infoRow = Driver.get().findElements(By.xpath("//table[1]/tbody/tr"));
-        List<String> allInfoRow = new ArrayList<>();
-        List<String> GIPInfoPage = new ArrayList<>();
-        for (int i = 1; i < infoRow.size()-1; i++) {
-             List<WebElement> rowCellInfo = Driver.get().findElements(By.xpath("//table[1]/tbody/tr["+i+"]/td"));
-            for (WebElement element : rowCellInfo) {
-                allInfoRow.add(element.getText());
-            }
-            Driver.get().findElement(By.xpath("//table[1]/tbody/tr["+i+"]/td")).click();
-            dashboardPage.waitUntilLoaderScreenDisappear();
-            BrowserUtils.waitFor(3);
-            List<WebElement> GIPInfo = Driver.get().findElements(By.xpath("//div[@class='control-group attribute-row']"));
-            for (int j = 1; j < GIPInfo.size()-3; j++) {
-                 GIPInfoPage.add(GIPInfo.get(j).getText());
-            }
-            Assert.assertEquals(allInfoRow,GIPInfoPage);
-            Driver.get().navigate().back();
-            BrowserUtils.waitFor(2);
-        }
-        new LoginPage().logOutUser();
+        new GeneralInfoPage().InfoShouldBeTheSame();
     }
 
 

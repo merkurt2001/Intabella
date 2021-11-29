@@ -6,6 +6,7 @@ import com.intabella.pages.LoginPage;
 import com.intabella.utilities.BrowserUtils;
 import com.intabella.utilities.ConfigurationReader;
 import com.intabella.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -46,6 +47,7 @@ public class VehicleGeneralInfo_step_def {
 
         new DashboardPage().waitUntilLoaderScreenDisappear();
         new DashboardPage().navigateToModule(tab, module);
+
     }
 
     @Given("the user should see the General Information by clicking on any vehicle row")
@@ -111,4 +113,6 @@ public class VehicleGeneralInfo_step_def {
         }
         new LoginPage().logOutUser();
     }
+
+
 }

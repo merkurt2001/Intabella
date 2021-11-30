@@ -23,6 +23,12 @@ public class LogInFun_stepDef {
         Driver.get().get(url);
     }
 
+    @Given("the user logged in as {string}")
+    public void the_user_logged_in_as(String userType) {
+
+        new LoginPage().logInAsdifferntUser(userType);
+    }
+
     @When("the {string} enters the username {string} and password {string} information")
     public void the_enters_the_username_and_password_information(String userType, String username,
                                                                  String password) {

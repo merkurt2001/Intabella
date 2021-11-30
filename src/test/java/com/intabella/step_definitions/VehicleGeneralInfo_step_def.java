@@ -16,11 +16,7 @@ import java.util.List;
 
 public class VehicleGeneralInfo_step_def {
 
-    @Given("the user logged in as {string}")
-    public void the_user_logged_in_as(String userType) {
 
-        new LoginPage().logInAsdifferntUser(userType);
-    }
 
     @Given("the user click on the {string} tab {string} module as user {string}")
     public void the_user_click_on_the_tab_module_as_user(String tab, String module, String UserType) {

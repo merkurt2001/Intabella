@@ -2,17 +2,9 @@ package com.intabella.step_definitions;
 
 import com.intabella.pages.DashboardPage;
 import com.intabella.pages.GeneralInfoPage;
-import com.intabella.pages.LoginPage;
-import com.intabella.utilities.BrowserUtils;
-import com.intabella.utilities.Driver;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
-import java.util.List;
 
 public class VehicleGeneralInfo_step_def {
 

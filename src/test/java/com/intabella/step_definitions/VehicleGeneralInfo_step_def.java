@@ -23,6 +23,7 @@ public class VehicleGeneralInfo_step_def {
         DashboardPage dashboardPage = new DashboardPage();
         dashboardPage.waitUntilLoaderScreenDisappear();
         dashboardPage.navigateToModule(tab,module,UserType);
+        BrowserUtils.waitFor(4);
 
     }
 

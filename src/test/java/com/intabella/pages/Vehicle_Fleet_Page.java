@@ -2,10 +2,12 @@ package com.intabella.pages;
 
 import com.intabella.utilities.BrowserUtils;
 import com.intabella.utilities.Driver;
+import io.cucumber.java.eo.Se;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 public class Vehicle_Fleet_Page extends BasePage {
     /*
@@ -47,4 +49,13 @@ public class Vehicle_Fleet_Page extends BasePage {
     public WebElement exportConfirmationMessage;
 
 
+
+    @FindBy(css = "a[title='Filters']")
+    public WebElement filtersButton;
+
+    @FindBy(linkText = "Manage filters")
+    public WebElement manageFiltersDropdown;
+
+
 }
+

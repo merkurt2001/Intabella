@@ -1,4 +1,4 @@
-@MAY
+@morning
 Feature: Add Event 2
 
   Background:

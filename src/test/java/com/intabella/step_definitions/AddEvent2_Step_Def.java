@@ -46,8 +46,8 @@ public class AddEvent2_Step_Def {
 
     @Then("the user clicks the Repeats dropdown menu")
     public void the_user_clicks_the_Repeats_dropdown_menu() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        new Add_Event_2().RepeatDropDown();
     }
 
     @Then("the user checks {string}")

@@ -22,6 +22,12 @@ public class Add_Event_2 extends BasePage {
     @FindBy(xpath = "//*[@recurrence-repeat='recurrence-repeat']")
     public WebElement RepeatBox;
 
+    @FindBy(xpath = "//*[@*='recurrence-repeats__select']")
+    public WebElement RepeatDropDown;
+
+
+
+
    public void theUserSeeTheAddEventButton(){
        Assert.assertEquals("Add Event",AddEventButton.getText());
    }
@@ -51,6 +57,11 @@ public class Add_Event_2 extends BasePage {
        AddEventButton.click();
        RepeatBox.click();
        Assert.assertTrue("should be clickable", RepeatBox.isSelected());
+   }
+   public void RepeatDropDown(){
+       AddEventButton.click();
+       RepeatDropDown.click();
+       Assert.assertTrue("Drop down should be displayed", RepeatDropDown.isSelected());
    }
 }
 

@@ -71,8 +71,6 @@ public abstract class  BasePage {
         return userName.getText();
     }
 
-
-
     public void logOut(){
         BrowserUtils.waitFor(2);
         BrowserUtils.clickWithJS(userName);

@@ -33,6 +33,15 @@ public class GeneralInfoPage extends BasePage{
     @FindBy(xpath = "//div[@class='control-label']")
     public List<WebElement> ListOfGeneralInfoPageRowInfo;
 
+    @FindBy(xpath ="//table/tbody/tr[1]")
+    public WebElement TableFirstRow;
+
+
+    public void NavGeneralInformationPage(){
+    TableFirstRow.click();
+    }
+
+
     public void TheUserShouldSeeGIP(){
 
         BrowserUtils.waitFor(3);

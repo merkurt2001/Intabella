@@ -8,6 +8,11 @@ import io.cucumber.java.en.When;
 
 public class VehicleGeneralInfo_step_def {
 
+    @Given("the user is on the General Information page")
+    public void the_user_is_on_the_General_Information_page() {
+
+        new GeneralInfoPage().NavGeneralInformationPage();
+    }
 
 
     @Given("the user click on the {string} tab {string} module as user {string}")

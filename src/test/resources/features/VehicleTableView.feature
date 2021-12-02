@@ -1,4 +1,4 @@
-@INN-1033
+@INN-1033 @wipp
 Feature: Vehicle Table View
 
 	Background:

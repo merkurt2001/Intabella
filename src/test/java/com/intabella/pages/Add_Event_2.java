@@ -23,6 +23,12 @@ public class Add_Event_2 extends BasePage {
     @FindBy(xpath = "(//input[@type='checkbox'])[3]")
     public WebElement RepeatBox;
 
+    @FindBy(xpath = "//*[@*='recurrence-repeats__select']")
+    public WebElement RepeatDropDown;
+
+
+
+
    public void theUserSeeTheAddEventButton(){
 
        BrowserUtils.waitFor(5);
@@ -58,6 +64,11 @@ public class Add_Event_2 extends BasePage {
        AddEventButton.click();
        RepeatBox.click();
        Assert.assertTrue("should be selected", RepeatBox.isSelected());
+   }
+   public void RepeatDropDown(){
+       AddEventButton.click();
+       RepeatDropDown.click();
+       Assert.assertTrue("Drop down should be displayed", RepeatDropDown.isSelected());
    }
 }
 

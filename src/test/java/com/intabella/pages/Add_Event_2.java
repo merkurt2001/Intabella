@@ -26,6 +26,9 @@ public class Add_Event_2 extends BasePage {
     @FindBy(xpath = "//*[@*='recurrence-repeats__select']")
     public WebElement RepeatDropDown;
 
+    @FindBy(id = "ui-id-2")
+    public WebElement AddEventPopUpPageText;
+
 
 
 
@@ -36,8 +39,9 @@ public class Add_Event_2 extends BasePage {
    }
 
    public void clicksOnAddEventEventPopUp(){
+       BrowserUtils.waitFor(5);
        AddEventButton.click();
-     Assert.assertEquals("Add Event",AddEventTitle.getText());
+     Assert.assertEquals("Add Event",AddEventPopUpPageText.getText());
 
    }
 

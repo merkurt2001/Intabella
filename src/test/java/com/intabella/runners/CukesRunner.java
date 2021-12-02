@@ -10,8 +10,8 @@ import org.junit.runner.RunWith;
                 "html:target/default-html-reports"},
         features = "src/test/resources/features",
         glue = "com/intabella/step_definitions",
-        dryRun = true,
-        tags = "@INN-1033"
+        dryRun = false,
+        tags = "@morning"
 )
 public class CukesRunner {
 

@@ -1,5 +1,6 @@
 package com.intabella.pages;
 
+import com.intabella.utilities.BrowserUtils;
 import com.intabella.utilities.Driver;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -19,38 +20,59 @@ public class Add_Event_2 extends BasePage {
     @FindBy(xpath = "(//input[@type='checkbox'])[2]")
     public WebElement AlldayEvent;
 
-    @FindBy(xpath = "//*[@recurrence-repeat='recurrence-repeat']")
+    @FindBy(xpath = "(//input[@type='checkbox'])[3]")
     public WebElement RepeatBox;
 
+    @FindBy(xpath = "//*[@*='recurrence-repeats__select']")
+    public WebElement RepeatDropDown;
+
+    @FindBy(id = "ui-id-2")
+    public WebElement AddEventPopUpPageText;
+
+
+
+
    public void theUserSeeTheAddEventButton(){
+
+       BrowserUtils.waitFor(5);
        Assert.assertEquals("Add Event",AddEventButton.getText());
    }
 
    public void clicksOnAddEventEventPopUp(){
+       BrowserUtils.waitFor(5);
        AddEventButton.click();
-     Assert.assertEquals("Add Event",AddEventTitle.getText());
+     Assert.assertEquals("Add Event",AddEventPopUpPageText.getText());
 
    }
 
    public void colorSelection() {
+       BrowserUtils.waitFor(5);
        AddEventButton.click();
        List<WebElement> colors = Driver.get().findElements(By.xpath("//span[@class='color']"));
-       for (int i = 0; i < colors.size(); i++) {
+       for (int i = 1; i < colors.size(); i++) {
            WebElement color = Driver.get().findElement(By.xpath("//span[@class='color'][" + i + "]"));
            color.click();
-           Assert.assertTrue(color.isSelected());
+           BrowserUtils.waitFor(2);
+           Assert.assertTrue(color.isEnabled());
        }
    }
    public void AlldayEventCheck(){
+       BrowserUtils.waitFor(5);
        AddEventButton.click();
        AlldayEvent.click();
-       Assert.assertTrue("should be clickable",AlldayEvent.isSelected());
+       Assert.assertTrue("should be selected",AlldayEvent.isSelected());
    }
 
    public void RepeatBox(){
+       BrowserUtils.waitFor(5);
        AddEventButton.click();
        RepeatBox.click();
-       Assert.assertTrue("should be clickable", RepeatBox.isSelected());
+       Assert.assertTrue("should be selected", RepeatBox.isSelected());
+   }
+   public void RepeatDropDown(){
+       AddEventButton.click();
+       RepeatDropDown.click();
+       Assert.assertTrue("Drop down should be displayed", RepeatDropDown.isSelected());
    }
 }
 

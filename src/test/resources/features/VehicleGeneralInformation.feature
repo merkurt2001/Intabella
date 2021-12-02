@@ -7,7 +7,7 @@ Feature: Vehicle General Information
 #    And the user click on the "Fleet" tab "Vehicles" module as user "userType"
 #    Then the user is on the General Information page
 
-
+  @alisBiu
   Scenario Outline: User can see the General Information page by clicking on any vehicle (row) <userType>
     When the "<userType>" enters the username "<username>" and password "<password>" information
     And the user click on the "Fleet" tab "Vehicles" module as user "<userType>"
@@ -20,7 +20,7 @@ Feature: Vehicle General Information
 
 
 
-  @wip
+  @llau
     Scenario Outline: User can see the General Information Page by clicking on the Eye icon <userType>
       When the "<userType>" enters the username "<username>" and password "<password>" information
       And the user click on the "Fleet" tab "Vehicles" module as user "<userType>"
@@ -33,7 +33,7 @@ Feature: Vehicle General Information
 
 
 
-
+  @rrushi
     Scenario Outline: Manager's should see Delete Edit and Add Event on the General Information page <userType>
       When the "<userType>" enters the username "<username>" and password "<password>" information
       And the user click on the "Fleet" tab "Vehicles" module as user "<userType>"

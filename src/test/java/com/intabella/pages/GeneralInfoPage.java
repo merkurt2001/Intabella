@@ -13,7 +13,7 @@ import java.util.*;
 public class GeneralInfoPage extends BasePage{
 
     @FindBy(xpath = "//table/tbody/tr")
-    public List<WebElement> table;
+    public List<WebElement> AllTableRow;
 
     @FindBy(xpath = "//h5[@class='user-fieldset']" )
     public WebElement GeneralInfoPageSubtitle;
@@ -33,11 +33,20 @@ public class GeneralInfoPage extends BasePage{
     @FindBy(xpath = "//div[@class='control-label']")
     public List<WebElement> ListOfGeneralInfoPageRowInfo;
 
+    @FindBy(xpath ="//table/tbody/tr[1]")
+    public WebElement TableFirstRow;
+
+
+    public void NavGeneralInformationPage(){
+    TableFirstRow.click();
+    }
+
+
     public void TheUserShouldSeeGIP(){
 
         BrowserUtils.waitFor(3);
 
-        for (int i = 1; i <= table.size(); i++) {
+        for (int i = 1; i <= AllTableRow.size(); i++) {
             WebElement row1 = Driver.get().findElement(By.xpath("//table/tbody/tr[" + i + "]"));
             row1.click();
             BrowserUtils.waitFor(5);
@@ -55,7 +64,7 @@ public class GeneralInfoPage extends BasePage{
 
             BrowserUtils.waitFor(3);
 
-            for (int i = 1; i <= table.size(); i++) {
+            for (int i = 1; i <= AllTableRow.size(); i++) {
 
                 WebElement dots = Driver.get().findElement(By.xpath("//table/tbody/tr[" + i + "]/td[20]"));
                 BrowserUtils.doubleClick(dots);
@@ -69,7 +78,7 @@ public class GeneralInfoPage extends BasePage{
 
             BrowserUtils.waitFor(3);
 
-            for (int i = 1; i <= table.size(); i++) {
+            for (int i = 1; i <= AllTableRow.size(); i++) {
 
                 WebElement dots = Driver.get().findElement(By.xpath("//table/tbody/tr[" + i + "]/td[21]"));
                 BrowserUtils.doubleClick(dots);
@@ -86,7 +95,7 @@ public class GeneralInfoPage extends BasePage{
 
         BrowserUtils.waitFor(3);
 
-        for (int i = 1; i <= table.size(); i++) {
+        for (int i = 1; i <= AllTableRow.size(); i++) {
 
             WebElement row1 = Driver.get().findElement(By.xpath("//table/tbody/tr[" + i + "]"));
             row1.click();
@@ -105,7 +114,7 @@ public class GeneralInfoPage extends BasePage{
 
         BrowserUtils.waitFor(3);
 
-        for (int i = 1; i <= table.size(); i++) {
+        for (int i = 1; i <= AllTableRow.size(); i++) {
 
             WebElement row1 = Driver.get().findElement(By.xpath("//table/tbody/tr[" + i + "]"));
             row1.click();
@@ -127,15 +136,16 @@ public class GeneralInfoPage extends BasePage{
         List<String> allInfoRow = new ArrayList<>();
         List<String> GIPInfoPage = new ArrayList<>();
 
-        for (int i = 1; i < table.size(); i++) {
+        for (int i = 1; i < AllTableRow.size(); i++) {
 
             List<WebElement> rowCellInfo = Driver.get().findElements(By.xpath("//table/tbody/tr["+i+"]/td"));
             for (int j = 0; j < rowCellInfo.size()-1; j++) {
                 allInfoRow.add(rowCellInfo.get(j).getText());
             }
 
-            Driver.get().findElement(By.xpath("//table[1]/tbody/tr["+i+"]/td")).click();
+            Driver.get().findElement(By.xpath("//table/tbody/tr["+i+"]/td")).click();
 
+            new DashboardPage().waitUntilLoaderScreenDisappear();
             BrowserUtils.waitFor(3);
 
             for (int j = 0; j < ListOfGeneralInfoPageRowInfo.size()-3; j++) {

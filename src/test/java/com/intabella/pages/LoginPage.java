@@ -1,17 +1,17 @@
 package com.intabella.pages;
 
 import com.intabella.utilities.BrowserUtils;
+import com.intabella.utilities.ConfigurationReader;
 import com.intabella.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+public  class LoginPage {
 
     public LoginPage(){
         PageFactory.initElements(Driver.get(), this);
     }
-
     @FindBy(id="prependedInput")
     public WebElement userName;
 
@@ -52,5 +52,24 @@ public class LoginPage {
         // verification that we logged
     }
 
+    public void logInAsdifferntUser(String userType){
+
+        String username = null;
+        String password = null;
+
+        if (userType.equals("driver")) {
+            username = ConfigurationReader.get("driver_username");
+            password = ConfigurationReader.get("driver_password");
+        } else if (userType.equals("sales manager")) {
+            username = ConfigurationReader.get("salesmanager_username");
+            password = ConfigurationReader.get("salesmanager_password");
+        } else if (userType.equals("store manager")) {
+            username = ConfigurationReader.get("storemanager_username");
+            password = ConfigurationReader.get("storemanager_password");
+        } else {
+            System.out.println("Invalid user");
+        }
+        new LoginPage().login(username, password);
+    }
 
 }

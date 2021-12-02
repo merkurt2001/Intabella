@@ -2,50 +2,24 @@ package com.intabella.step_definitions;
 
 import com.intabella.pages.DashboardPage;
 import com.intabella.pages.GeneralInfoPage;
-import com.intabella.pages.LoginPage;
-import com.intabella.utilities.BrowserUtils;
-import com.intabella.utilities.ConfigurationReader;
-import com.intabella.utilities.Driver;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class VehicleGeneralInfo_step_def {
 
-    @Given("the user logged in as {string}")
-    public void the_user_logged_in_as(String userType) {
+    @Given("the user click on the {string} tab {string} module as user {string}")
+    public void the_user_click_on_the_tab_module_as_user(String tab, String module, String UserType) {
+        DashboardPage dashboardPage = new DashboardPage();
+        dashboardPage.waitUntilLoaderScreenDisappear();
+        dashboardPage.navigateToModule(tab,module,UserType);
 
-        String username = null;
-        String password = null;
-
-        if (userType.equals("driver")) {
-            username = ConfigurationReader.get("driver_username");
-            password = ConfigurationReader.get("driver_password");
-        } else if (userType.equals("sales manager")) {
-            username = ConfigurationReader.get("salesmanager_username");
-            password = ConfigurationReader.get("salesmanager_password");
-        } else if (userType.equals("store manager")) {
-            username = ConfigurationReader.get("storemanager_username");
-            password = ConfigurationReader.get("storemanager_password");
-        } else {
-            System.out.println("Invalid user");
-        }
-        new LoginPage().login(username, password);
     }
 
-    @Given("the user clicks on the {string} {string} module")
-    public void the_user_clicks_on_the_module(String tab, String module) {
+    @Given("the user is on the General Information page")
+    public void the_user_is_on_the_General_Information_page() {
 
-        new DashboardPage().waitUntilLoaderScreenDisappear();
-        new DashboardPage().navigateToModule(tab, module);
+        new GeneralInfoPage().NavGeneralInformationPage();
     }
 
     @Given("the user should see the General Information by clicking on any vehicle row")
@@ -54,61 +28,29 @@ public class VehicleGeneralInfo_step_def {
         new GeneralInfoPage().TheUserShouldSeeGIP();
     }
 
-    @Given("the user can see the General Information page by clicking the Eye icon")
-    public void the_user_can_see_the_General_Information_page_by_clicking_the_Eye_icon() {
+    @When("the user can see the General Information page by clicking the Eye icon {string}")
+    public void the_user_can_see_the_General_Information_page_by_clicking_the_Eye_icon(String userType) {
 
-        new GeneralInfoPage().clickEye();
+        new GeneralInfoPage().clickEye(userType);
     }
 
     @When("the {string} clicks on any vehicle row and he lands to the General Information page he should see the Delete Edit and Add Event buttons")
     public void the_clicks_on_any_vehicle_row_and_he_lands_to_the_General_Information_page_he_should_see_the_Delete_Edit_and_Add_Event_buttons(String string) {
 
-        new DashboardPage().waitUntilLoaderScreenDisappear();
-        BrowserUtils.waitFor(3);
-
-        WebElement row = Driver.get().findElement(By.xpath("//table[1]/tbody/tr[1]"));
-        row.click();
-        BrowserUtils.waitFor(5);
-//        WebElement edit = Driver.get().findElement(By.xpath("(//i[@class='fa-pencil-square-o hide-text'])[1]"));
-//        System.out.println("edit.getText() = " + edit.getText());
+        new GeneralInfoPage().shouldSeeTheAddEventEditDeleteBtn();
     }
 
-    @When("the user by clicking on any vehicle row navigates to General Information page")
-    public void the_user_by_clicking_on_any_vehicle_row_navigates_to_General_Information_page() {
+    @When("driver navigates to GIP he should not see Add Event, Edit, Delete buttons")
+    public void driver_navigates_to_GIP_he_should_not_see_Add_Event_Edit_Delete_buttons() {
 
-        new GeneralInfoPage().navigateToGIP();
-    }
-
-    @Then("the user should not have any Add Event Edit Delete buttons")
-    public void the_user_should_not_have_any_Add_Event_Edit_Delete_buttons() {
-
-        new GeneralInfoPage().shouldNotHaveAddEventBtn();
+        new GeneralInfoPage().shouldNotHaveAddEventEditDeleteBtn();
     }
 
     @Given("information should be the same")
     public void information_should_be_the_same() {
-        DashboardPage dashboardPage = new DashboardPage();
-        dashboardPage.waitUntilLoaderScreenDisappear();
-        BrowserUtils.waitFor(3);
-        List<WebElement> infoRow = Driver.get().findElements(By.xpath("//table[1]/tbody/tr"));
-        List<String> allInfoRow = new ArrayList<>();
-        List<String> GIPInfoPage = new ArrayList<>();
-        for (int i = 1; i < infoRow.size()-1; i++) {
-             List<WebElement> rowCellInfo = Driver.get().findElements(By.xpath("//table[1]/tbody/tr["+i+"]/td"));
-            for (WebElement element : rowCellInfo) {
-                allInfoRow.add(element.getText());
-            }
-            Driver.get().findElement(By.xpath("//table[1]/tbody/tr["+i+"]/td")).click();
-            dashboardPage.waitUntilLoaderScreenDisappear();
-            BrowserUtils.waitFor(3);
-            List<WebElement> GIPInfo = Driver.get().findElements(By.xpath("//div[@class='control-group attribute-row']"));
-            for (int j = 1; j < GIPInfo.size()-3; j++) {
-                 GIPInfoPage.add(GIPInfo.get(j).getText());
-            }
-            Assert.assertEquals(allInfoRow,GIPInfoPage);
-            Driver.get().navigate().back();
-            BrowserUtils.waitFor(2);
-        }
-        new LoginPage().logOutUser();
+
+        new GeneralInfoPage().InfoShouldBeTheSame();
     }
+
+
 }

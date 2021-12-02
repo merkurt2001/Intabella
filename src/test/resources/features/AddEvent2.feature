@@ -3,8 +3,8 @@ Feature: Add Event 2
 
   Background:
     Given the user is on the login page
-    Then the user logged in as "sales manager"
-    And the user click on the "Fleet" tab "Vehicle" module as user "sales manager"
+    Then the user logged in as "store manager"
+    And the user click on the "Fleet" tab "Vehicles" module as user "store manager"
     Then the user is on the General Information page
 
 
@@ -17,7 +17,7 @@ Feature: Add Event 2
 
   Scenario:3- User can mark the event with any colour
     Given the user clicks any desired colour in the Color selection
-
+  @rrapi
   Scenario:  4- User can mark it as an "All-day event"
     Given the user clicks the All-day event box
 

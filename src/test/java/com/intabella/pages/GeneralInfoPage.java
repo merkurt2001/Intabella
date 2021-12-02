@@ -38,7 +38,8 @@ public class GeneralInfoPage extends BasePage{
 
 
     public void NavGeneralInformationPage(){
-    TableFirstRow.click();
+        BrowserUtils.waitFor(5);
+        TableFirstRow.click();
     }
 
 

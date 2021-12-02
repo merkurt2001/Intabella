@@ -5,6 +5,7 @@ Feature: Vehicle General Information
     Given the user is on the login page
 #    And the user logged in as "driver"
 #    And the user click on the "Fleet" tab "Vehicles" module as user "userType"
+#    Then the user is on the General Information page
 
 
   Scenario Outline: User can see the General Information page by clicking on any vehicle (row) <userType>

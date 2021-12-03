@@ -2,6 +2,7 @@ package com.intabella.step_definitions;
 
 import com.intabella.pages.DashboardPage;
 import com.intabella.pages.GeneralInfoPage;
+import com.intabella.utilities.BrowserUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
@@ -13,6 +14,7 @@ public class VehicleGeneralInfo_step_def {
         DashboardPage dashboardPage = new DashboardPage();
         dashboardPage.waitUntilLoaderScreenDisappear();
         dashboardPage.navigateToModule(tab,module,UserType);
+        BrowserUtils.waitFor(4);
 
     }
 

@@ -36,6 +36,9 @@ public class GeneralInfoPage extends BasePage{
     @FindBy(xpath ="//table/tbody/tr[1]")
     public WebElement TableFirstRow;
 
+    @FindBy (css = "a[title=Filters]")
+    public WebElement btn_Filter;
+
 
     public void NavGeneralInformationPage(){
         BrowserUtils.waitFor(5);
@@ -157,5 +160,11 @@ public class GeneralInfoPage extends BasePage{
             Driver.get().navigate().back();
         }
         new LoginPage().logOutUser();
+    }
+
+    public void clickOnFiltersIcon(){
+        BrowserUtils.waitFor(3);
+
+        //Driver.get()
     }
 }

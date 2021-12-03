@@ -10,7 +10,9 @@ import static org.junit.Assert.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class VehicleFiltersStepDef {
 
@@ -33,6 +35,8 @@ public class VehicleFiltersStepDef {
         Driver.get().findElement(
                         By.xpath("//div[contains(text(),'" + name + "')]"))
                 .click();
+
+        BrowserUtils.waitFor(3);
     }
 
     @Then("the user click default button under {string} filter")
@@ -41,6 +45,8 @@ public class VehicleFiltersStepDef {
         Driver.get().findElement(
                 By.xpath("//div[contains(text(),'"+name+"')]//parent::div//following-sibling::div//child::button[@data-toggle='dropdown']"))
                 .click();
+
+        BrowserUtils.waitFor(3);
 
     }
 
@@ -60,6 +66,7 @@ public class VehicleFiltersStepDef {
     public void theUserClickMethodUnderFilter(String method, String filter) {
         String locator = "//div[contains(text(),'"+filter+"')]//following-sibling::div//child::a[contains(text(),'"+method.toLowerCase()+"')]";
         Driver.get().findElement(By.xpath(locator)).click();
+        BrowserUtils.waitFor(3);
     }
 
     @And("the user click choose values button and select {string}")
@@ -67,12 +74,13 @@ public class VehicleFiltersStepDef {
         String locator = "//ul[@class='select2-results']//child::div[contains(text(),'"+option+"')]";
         vehicleFleetPage.TagsChooseValuesButton.click();
         BrowserUtils.waitForClickablility(Driver.get().findElement(By.xpath(locator)),3).click();
+        BrowserUtils.waitFor(3);
     }
 
     @Then("the user click update under {string} filter")
     public void theUserClickUpdateUnderFilter(String filter) {
         Driver.get().findElement(By.xpath("//input[@id='"+filter+"']//following-sibling::button[@type='button']")).click();
-        BrowserUtils.waitFor(5);
+        BrowserUtils.waitFor(3);
     }
 
     @Then("verify the table should include corresponding {string} under {string} column")
@@ -81,6 +89,23 @@ public class VehicleFiltersStepDef {
         for (String row:listOfValuesUnderFilterRow){
             assertEquals(expectedValue,row);
         }
+    }
+
+    @Then("verify the table should not include corresponding {string} under {string} column")
+    public void verifyTheTableShouldNotIncludeCorrespondingUnderColumn(String expectedValue, String filter) {
+        List<String> listOfValuesUnderFilterRow = vehicleFleetPage.getListOfAnyRow(filter);
+        for (String row:listOfValuesUnderFilterRow){
+            assertNotEquals(expectedValue,row);
+        }
+    }
+
+    @Then("verify the table should not include corresponding following options under {string} column")
+    public void verifyTheTableShouldNotIncludeCorrespondingUnderColumn(String filter, List<String> expectedValues) {
+        System.out.println("expectedValues = " + expectedValues);
+        List<String> listOfValuesUnderFilterRow = vehicleFleetPage.getListOfAnyRow(filter);
+        List<String> listDistinct = listOfValuesUnderFilterRow.stream().distinct().collect(Collectors.toList());
+        System.out.println("listDistinct = " + listDistinct);
+        assertFalse(expectedValues.containsAll(listDistinct) && listDistinct.containsAll(expectedValues));
     }
 }
 

@@ -75,8 +75,7 @@ public class Vehicle_Fleet_Page extends BasePage {
     public List<String> getListOfAnyRow(String row){
         int indexNumber = getIndexNumberRow(row);
         String locator = "//table[@class='grid table-hover table table-bordered table-condensed']/tbody/tr/td["+(indexNumber+1)+"]";
-        List<String> valueOfRow = BrowserUtils.getElementsText(Driver.get().findElements(By.xpath(locator)));
-        return valueOfRow;
+        return BrowserUtils.getElementsText(Driver.get().findElements(By.xpath(locator)));
     }
 
 }

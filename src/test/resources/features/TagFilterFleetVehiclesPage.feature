@@ -1,3 +1,4 @@
+@ismail
 Feature: Tags Filter under Fleet-Vehicles Page
 
   Background:
@@ -28,5 +29,28 @@ Feature: Tags Filter under Fleet-Vehicles Page
     Then the user click update under "Tags" filter
     Then verify the table should include corresponding "Compact" under "Tags" column
 
+  Scenario: the user selects "Is not any Of" method with "Compact" option, the table should not include the corresponding value
+    Given the user click on the filters button
+    Then the user can select the "Tags" under manage filters
+    And the user click "Tags":All button
+    Then the user click default button under "Tags" filter
+    Then the user click "Is Not Any Of" method under "Tags" filter
+    And the user click choose values button and select "Compact"
+    Then the user click update under "Tags" filter
+    Then verify the table should not include corresponding "Compact" under "Tags" column
+
+  Scenario: the user selects "Is not any Of" method with "Compact" and "Sedan" option, the table should not include the corresponding value
+
+    Given the user click on the filters button
+    Then the user can select the "Tags" under manage filters
+    And the user click "Tags":All button
+    Then the user click default button under "Tags" filter
+    Then the user click "Is Not Any Of" method under "Tags" filter
+    And the user click choose values button and select "Compact"
+    And the user click choose values button and select "Sedan"
+    Then the user click update under "Tags" filter
+    Then verify the table should not include corresponding following options under "Tags" column
+      | Compact |
+      | Sedan   |
 
 

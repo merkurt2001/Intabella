@@ -14,7 +14,7 @@ Feature: Vehicle General Information
     Then the user should see the General Information by clicking on any vehicle row
     Examples:
       | userType      | username        | password    |
-      | driver        | user1           | UserUser123 |
+#      | driver        | user1           | UserUser123 |
       | sales manager | salesmanager103 | UserUser123 |
       | store manager | storemanager85  | UserUser123 |
 

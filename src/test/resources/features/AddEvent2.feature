@@ -3,8 +3,8 @@ Feature: Add Event 2
 
   Background:
     Given the user is on the login page
-    Then the user logged in as "store manager"
-    And the user click on the "Fleet" tab "Vehicles" module as user "store manager"
+    Then the user logged in as "sales manager"
+    And the user click on the "Fleet" tab "Vehicles" module as user "sales manager"
     Then the user is on the General Information page
 
 

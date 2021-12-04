@@ -34,6 +34,9 @@ public abstract class  BasePage {
     @FindBy(linkText = "My User")
     public WebElement myUser;
 
+    @FindBy(linkText = "Vehicles")
+    public WebElement VehicleModule;
+
     public BasePage() {
         PageFactory.initElements(Driver.get(), this);
     }
@@ -95,12 +98,13 @@ public abstract class  BasePage {
         String driver = "driver";
         if (driver.equals(UserType)) {
             String tabLocator = "//span[normalize-space()='" + tab + "' and contains(@class, 'title title-level-1')]";
-            String moduleLocator = "//*[@class='title title-level-2']";
+            String moduleLocator = "//span[@class='title title-level-2']";
             try {
                 BrowserUtils.waitForClickablility(By.xpath(tabLocator), 5);
                 WebElement tabElement = Driver.get().findElement(By.xpath(tabLocator));
                 new Actions(Driver.get()).moveToElement(tabElement).pause(200).doubleClick(tabElement).build().perform();
             } catch (Exception e) {
+                BrowserUtils.waitForStaleElement(Driver.get().findElement(By.xpath(moduleLocator)));
                 BrowserUtils.clickWithWait(By.xpath(tabLocator), 5);
             }
             try {
@@ -109,27 +113,28 @@ public abstract class  BasePage {
                 BrowserUtils.scrollToElement(Driver.get().findElement(By.xpath(moduleLocator)));
                 Driver.get().findElement(By.xpath(moduleLocator)).click();
             } catch (Exception e) {
-//            BrowserUtils.waitForStaleElement(Driver.get().findElement(By.xpath(moduleLocator)));
+            BrowserUtils.waitForStaleElement(Driver.get().findElement(By.xpath(moduleLocator)));
                 BrowserUtils.clickWithTimeOut(Driver.get().findElement(By.xpath(moduleLocator)), 5);
             }
         }else {
             String tabLocator = "//span[normalize-space()='" + tab + "' and contains(@class, 'title title-level-1')]";
-            String moduleLocator = "//span[normalize-space()='" + module + "' and contains(@class, 'title title-level-2')]";
+            WebElement moduleLocator = VehicleModule;
             try {
                 BrowserUtils.waitForClickablility(By.xpath(tabLocator), 5);
                 WebElement tabElement = Driver.get().findElement(By.xpath(tabLocator));
                 new Actions(Driver.get()).moveToElement(tabElement).pause(200).doubleClick(tabElement).build().perform();
             } catch (Exception e) {
+                BrowserUtils.waitForStaleElement(moduleLocator);
                 BrowserUtils.clickWithWait(By.xpath(tabLocator), 5);
             }
             try {
-                BrowserUtils.waitForPresenceOfElement(By.xpath(moduleLocator), 5);
-                BrowserUtils.waitForVisibility(By.xpath(moduleLocator), 5);
-                BrowserUtils.scrollToElement(Driver.get().findElement(By.xpath(moduleLocator)));
-                Driver.get().findElement(By.xpath(moduleLocator)).click();
+                BrowserUtils.waitForPresenceOfElement(By.linkText("Vehicles"), 5);
+                BrowserUtils.waitForVisibility(By.linkText("Vehicles"), 5);
+                BrowserUtils.scrollToElement(Driver.get().findElement(By.linkText("Vehicles")));
+                Driver.get().findElement(By.linkText("Vehicles")).click();
             } catch (Exception e) {
-//            BrowserUtils.waitForStaleElement(Driver.get().findElement(By.xpath(moduleLocator)));
-                BrowserUtils.clickWithTimeOut(Driver.get().findElement(By.xpath(moduleLocator)), 5);
+            BrowserUtils.waitForStaleElement(Driver.get().findElement(By.linkText("Vehicles")));
+                BrowserUtils.clickWithTimeOut(Driver.get().findElement(By.linkText("Vehicles")), 5);
             }
         }
     }

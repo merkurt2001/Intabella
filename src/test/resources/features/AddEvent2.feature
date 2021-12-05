@@ -8,7 +8,7 @@ Feature: Add Event 2
 
 
   Scenario:1- User can access the "Add Event" page from the "General Information" page
-            (by clicking on any vehicle/row under Fleet-Vehicle module)
+  (by clicking on any vehicle/row under Fleet-Vehicle module)
     Given the user see the Add Event button at the upper right most corner
   @morning
   Scenario:2- After clicking on "Add event" button, "Add Event" page should pop up.
@@ -44,9 +44,9 @@ Feature: Add Event 2
       | After          |
       | By             |
 
-    Scenario: 6- All Users can see all events in the General information page
-      Given the user enters the desired event in the "Title" box
-      Then the user fills in the Description box with a brief explanation regarding the event
-      Then the user clicks on the Repeat box
-      Then the user clicks on Ends button
-      And the user clicks on the Save icon
+  Scenario: 6- All Users can see all events in the General information page
+    Given the user enters the desired event in the "Title" box
+    Then the user fills in the Description box with a brief explanation regarding the event
+    Then the user clicks on the Repeat box
+    Then the user clicks on Ends button
+    And the user clicks on the Save icon

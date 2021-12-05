@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class VehicleTableArrangementPage extends BasePage{
+public class VehicleTableArrangementPage{
     public VehicleTableArrangementPage(){
         PageFactory.initElements(Driver.get(), this);}
 

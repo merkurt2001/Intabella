@@ -1,4 +1,3 @@
-@morning
 Feature: Add Event 2
 
   Background:
@@ -11,7 +10,7 @@ Feature: Add Event 2
   Scenario:1- User can access the "Add Event" page from the "General Information" page
             (by clicking on any vehicle/row under Fleet-Vehicle module)
     Given the user see the Add Event button at the upper right most corner
-
+  @morning
   Scenario:2- After clicking on "Add event" button, "Add Event" page should pop up.
     Given the user clicks on the Add Event button and Add Event pop up
 

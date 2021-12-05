@@ -19,6 +19,8 @@ public class VehicleTableArrangementPage{
 
 @FindBy(xpath = "//table/thead/tr/th[6]")
     public WebElement ModelYearClick;
+@FindBy(xpath = "(//*[@class='fa-refresh'])[2]")
+    public WebElement RefreshButton;
 
 
 

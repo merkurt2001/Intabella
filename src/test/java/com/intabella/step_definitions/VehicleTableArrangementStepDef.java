@@ -27,8 +27,8 @@ public class VehicleTableArrangementStepDef {
         Assert.assertEquals("25",pages.vehicleTableArrangementPage().vehicleViewPerPageDefault.getText());
     }
 
-    @Given("User select  one of the options")
-    public void user_select_one_of_the_options() {
+    @Given("User select each of the options")
+    public void user_select_each_of_the_options() {
     List<String> expectednumbers= new ArrayList<>();
     expectednumbers.add("10");
     expectednumbers.add("25");
@@ -77,13 +77,10 @@ public class VehicleTableArrangementStepDef {
 
     @Given("user should click the reset button")
     public void user_should_click_the_reset_button() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        pages.vehicleTableArrangementPage().RefreshButton.click();
     }
-
-    @Given("user vefiry if model year module is back on default")
-    public void user_vefiry_if_model_year_module_is_back_on_default() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @Given("user choose the {int} options from the View per page dropdown")
+    public void user_choose_the_options_from_the_View_per_page_dropdown(Integer int1) {
+       Driver.get().findElement(By.xpath("(//a[@class='dropdown-item'])[3]")).click();
     }
 }

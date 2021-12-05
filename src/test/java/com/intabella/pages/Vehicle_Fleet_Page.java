@@ -73,6 +73,9 @@ public class Vehicle_Fleet_Page extends BasePage {
     @FindBy(css = ".btn.ok.btn-danger")
     public WebElement yesDeletebutton;
 
+    @FindBy(className = "oro-subtitle")
+    public WebElement AllCarsAsSubTitle;
+
     public int getIndexNumberRow(String row) {
         List<String> rowNames = BrowserUtils.getElementsText(tableRows);
         return rowNames.indexOf(row.toUpperCase());

@@ -9,6 +9,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,15 +48,32 @@ public class VehicleTableArrangementStepDef {
 
     @Given("user should click on the model year module")
     public void user_should_click_on_the_model_year_module() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        BrowserUtils.waitFor(3);
+       pages.vehicleTableArrangementPage().ModelYearClick.click();
+       BrowserUtils.waitFor(3);
+
     }
 
     @Given("user verify if the model year  colum is on decending")
     public void user_verify_if_the_model_year_colum_is_on_decending() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
+        List<String> Modelyear= new ArrayList<>();
+       List<WebElement> size= Driver.get().findElements(By.xpath("//table/tbody/tr"));
+
+       for (int i = 0; i < size.size(); i++) {
+           WebElement RowCellSixInfo=Driver.get().findElement(By.xpath("//table/tbody/tr["+(i+1)+"]/td[6]"));
+            Modelyear.add(RowCellSixInfo.getText());
+        }
+        boolean match=true;
+        for (int i = 0; i < size.size()-1; i++) {
+           //'' System.out.println(Modelyear.get(i));
+        if (Integer.parseInt(Modelyear.get(i))>Integer.parseInt(Modelyear.get(i+1))){
+            match=false;
+            break;
+        }}
+
+            Assert.assertTrue(match);
+        }
+
 
     @Given("user should click the reset button")
     public void user_should_click_the_reset_button() {

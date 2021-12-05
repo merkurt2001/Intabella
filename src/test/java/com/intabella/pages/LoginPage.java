@@ -72,4 +72,22 @@ public  class LoginPage {
         new LoginPage().login(username, password);
     }
 
+    public void logInWithSalesmanagerAndStoremanager(String userType){
+
+        String username = null;
+        String password = null;
+
+        if (userType.equals("sales manager")) {
+            username = ConfigurationReader.get("salesmanager_username");
+            password = ConfigurationReader.get("salesmanager_password");
+        } else if (userType.equals("store manager")) {
+            username = ConfigurationReader.get("storemanager_username");
+            password = ConfigurationReader.get("storemanager_password");
+        } else {
+            System.out.println("Invalid user");
+        }
+        new LoginPage().login(username, password);
+    }
+
+
 }

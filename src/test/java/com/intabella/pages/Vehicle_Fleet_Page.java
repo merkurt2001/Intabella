@@ -67,6 +67,9 @@ public class Vehicle_Fleet_Page extends BasePage {
     @FindBy(xpath = "//table[@class='grid table-hover table table-bordered table-condensed']//th")
     public List<WebElement> tableRows;
 
+    @FindBy(className = "oro-subtitle")
+    public WebElement AllCarsAsSubtitle;
+
     public int getIndexNumberRow(String row) {
         List<String> rowNames = BrowserUtils.getElementsText(tableRows);
         return rowNames.indexOf(row.toUpperCase());

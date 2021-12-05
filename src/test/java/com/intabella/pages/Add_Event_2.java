@@ -98,7 +98,7 @@ public class Add_Event_2 extends BasePage {
         EndingOption.click();
         Assert.assertTrue("Ending option is clickable", EndingOption.isEnabled());
         Assert.assertTrue("Repeat ending option should be displayed", EndingOption.isDisplayed());
-}
+    }
 
     public void TitleBox(){
         AddEventButton.click();

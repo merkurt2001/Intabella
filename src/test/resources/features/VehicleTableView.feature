@@ -1,10 +1,11 @@
-@INN-1033 @wipp
+@INN-1033
 Feature: Vehicle Table View
 
 	Background:
 		Given the user is on the login page
 		And the user logged in as "driver"
-		And the user click on the Fleet tab Vehicles module
+		And the user clicks on the Fleet tab Vehicles module
+
 
 	@INN-1027
 	Scenario: the user can see all vehicle information under the Fleet-Vehicles module

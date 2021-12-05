@@ -63,7 +63,7 @@ public class VehicleTableView_StepDefinitions {
         Assert.assertTrue(fleetPage.exportConfirmationMessage.isDisplayed());
     }
 
-    @And("the user click on the Fleet tab Vehicles module")
+    @And("the user clicks on the Fleet tab Vehicles module")
     public void theUserClickOnTheFleetTabVehiclesModule() {
         new Actions(Driver.get()).moveToElement(fleetPage.tabLocator).pause(200).click(fleetPage.moduleLocator).perform();
         BrowserUtils.waitFor(10);

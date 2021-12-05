@@ -11,7 +11,6 @@ import org.openqa.selenium.By;
 
 public class AddEvent2_Step_Def {
 //Add_Event_2 add_event_2 = new Add_Event_2();
-//LoginPage loginPage = new LoginPage();
 
     @Then("the user see the Add Event button at the upper right most corner")
     public void the_user_see_the_Add_Event_button_at_the_upper_right_most_corner() {
@@ -54,7 +53,7 @@ public class AddEvent2_Step_Def {
     @Then("the user checks {string}")
     public void the_user_checks(String RepeatDropDown) {
 
-       new Add_Event_2().RepeatDropDown();
+        new Add_Event_2().RepeatDropDown();
     }
 
     @Given("the user clicks on Ends button")
@@ -89,4 +88,3 @@ public class AddEvent2_Step_Def {
 
 
 }
-

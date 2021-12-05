@@ -2,6 +2,7 @@ package com.intabella.pages;
 
 import com.intabella.utilities.BrowserUtils;
 import com.intabella.utilities.Driver;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -33,6 +34,12 @@ public abstract class  BasePage {
 
     @FindBy(linkText = "My User")
     public WebElement myUser;
+
+    @FindBy(linkText = "Vehicles")
+    public WebElement VehicleModule;
+
+    @FindBy(xpath = "(//*[@type='button'])[2]")
+    public WebElement closePopUpAddevent;
 
     public BasePage() {
         PageFactory.initElements(Driver.get(), this);
@@ -93,14 +100,18 @@ public abstract class  BasePage {
      */
     public void navigateToModule(String tab, String module, String UserType) {
         String driver = "driver";
+        String slMng = "sales manager";
+        String stMng = "store manager";
+
         if (driver.equals(UserType)) {
             String tabLocator = "//span[normalize-space()='" + tab + "' and contains(@class, 'title title-level-1')]";
-            String moduleLocator = "//*[@class='title title-level-2']";
+            String moduleLocator = "//span[@class='title title-level-2']";
             try {
                 BrowserUtils.waitForClickablility(By.xpath(tabLocator), 5);
                 WebElement tabElement = Driver.get().findElement(By.xpath(tabLocator));
                 new Actions(Driver.get()).moveToElement(tabElement).pause(200).doubleClick(tabElement).build().perform();
             } catch (Exception e) {
+                BrowserUtils.waitForStaleElement(Driver.get().findElement(By.xpath(moduleLocator)));
                 BrowserUtils.clickWithWait(By.xpath(tabLocator), 5);
             }
             try {
@@ -109,10 +120,18 @@ public abstract class  BasePage {
                 BrowserUtils.scrollToElement(Driver.get().findElement(By.xpath(moduleLocator)));
                 Driver.get().findElement(By.xpath(moduleLocator)).click();
             } catch (Exception e) {
-//            BrowserUtils.waitForStaleElement(Driver.get().findElement(By.xpath(moduleLocator)));
+            BrowserUtils.waitForStaleElement(Driver.get().findElement(By.xpath(moduleLocator)));
                 BrowserUtils.clickWithTimeOut(Driver.get().findElement(By.xpath(moduleLocator)), 5);
             }
-        }else {
+        }else if (slMng.equals(UserType) || stMng.equals(UserType)){
+
+//            boolean Xbutton = closePopUpAddevent.isDisplayed();
+//
+//            if(Xbutton){
+//                closePopUpAddevent.click();
+//            }
+
+
             String tabLocator = "//span[normalize-space()='" + tab + "' and contains(@class, 'title title-level-1')]";
             String moduleLocator = "//span[normalize-space()='" + module + "' and contains(@class, 'title title-level-2')]";
             try {
@@ -129,7 +148,7 @@ public abstract class  BasePage {
                 Driver.get().findElement(By.xpath(moduleLocator)).click();
             } catch (Exception e) {
 //            BrowserUtils.waitForStaleElement(Driver.get().findElement(By.xpath(moduleLocator)));
-                BrowserUtils.clickWithTimeOut(Driver.get().findElement(By.xpath(moduleLocator)), 5);
+                BrowserUtils.clickWithTimeOut(Driver.get().findElement(By.xpath(moduleLocator)),  5);
             }
         }
     }

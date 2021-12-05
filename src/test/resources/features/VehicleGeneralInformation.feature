@@ -1,4 +1,4 @@
-@Reg
+@INN-1051
 Feature: Vehicle General Information
 
   Background:
@@ -7,7 +7,7 @@ Feature: Vehicle General Information
 #    And the user click on the "Fleet" tab "Vehicles" module as user "userType"
 #    Then the user is on the General Information page
 
-  @alisBiu
+  @INN-1009
   Scenario Outline: User can see the General Information page by clicking on any vehicle (row) <userType>
     When the "<userType>" enters the username "<username>" and password "<password>" information
     And the user click on the "Fleet" tab "Vehicles" module as user "<userType>"
@@ -20,7 +20,7 @@ Feature: Vehicle General Information
 
 
 
-  @llau
+  @INN-1011
     Scenario Outline: User can see the General Information Page by clicking on the Eye icon <userType>
       When the "<userType>" enters the username "<username>" and password "<password>" information
       And the user click on the "Fleet" tab "Vehicles" module as user "<userType>"
@@ -33,7 +33,7 @@ Feature: Vehicle General Information
 
 
 
-  @rrushi
+  @INN-1012
     Scenario Outline: Manager's should see Delete Edit and Add Event on the General Information page <userType>
       When the "<userType>" enters the username "<username>" and password "<password>" information
       And the user click on the "Fleet" tab "Vehicles" module as user "<userType>"
@@ -45,7 +45,7 @@ Feature: Vehicle General Information
 
 
 
-
+  @INN-1013
     Scenario Outline: Driver should not see Add Event Edit Delete buttons
       When the "<userType>" enters the username "<username>" and password "<password>" information
       And the user click on the "Fleet" tab "Vehicles" module as user "<userType>"
@@ -57,7 +57,7 @@ Feature: Vehicle General Information
 
 
 
-
+  @INN-1014
     Scenario Outline: Information should be the same as on General Information and Fleet-Vehicle page <userType>
       When the "<userType>" enters the username "<username>" and password "<password>" information
       And the user click on the "Fleet" tab "Vehicles" module as user "<userType>"

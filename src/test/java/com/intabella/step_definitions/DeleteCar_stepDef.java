@@ -16,8 +16,6 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class DeleteCar_stepDef {
-
-
     @Then("the user should see delete button by hovering over end of the page")
     public void the_user_should_see_delete_button_by_hovering_over_end_of_the_page() {
 
@@ -32,7 +30,6 @@ public class DeleteCar_stepDef {
             BrowserUtils.hover(threeDots);
             BrowserUtils.waitFor(3);
             WebElement deleteButton = Driver.get().findElement(By.xpath("//*[@class='fa-trash-o hide-text']"));
-
 
         }
     }
@@ -77,7 +74,6 @@ public class DeleteCar_stepDef {
         Assert.assertEquals(actualMessage,message);
 
     }
-
 
 
 

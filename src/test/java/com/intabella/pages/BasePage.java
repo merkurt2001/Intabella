@@ -56,6 +56,9 @@ public abstract class  BasePage {
     @FindBy(xpath = "//button[@class='btn btn-primary']")
     public WebElement AddEventPopUpPage_Save_button;
 
+    @FindBy(xpath = "//div[@id='flash-messages']/div/div")
+    public WebElement CalendarEventSavedAlertMessage;
+
 
 
     public BasePage() {

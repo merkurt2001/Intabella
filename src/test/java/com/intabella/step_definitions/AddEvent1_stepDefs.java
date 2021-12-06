@@ -96,12 +96,10 @@ public class AddEvent1_stepDefs {
     }
 
 
-    @And("the user fills in the compulsory fields with some inputs and and leave some fields empty")
-    public void theUserFillsInTheCompulsoryFieldsWithSomeInputsAndAndLeaveSomeFieldsEmpty() {
+    @And("the user fills in only Title* input box and leaves the rest empty")
+    public void theUserFillsInOnlyTitleInputBoxAndLeavesTheRestEmpty() {
         BrowserUtils.waitFor(2);
-        new DashboardPage().AddEventPopUpPage_Organizer_display_name_input_box.sendKeys("John Doe");
-
-
+        new DashboardPage().AddEventPopUpPage_Title_input_box.sendKeys("Mr");
     }
 
     @And("the user clicks on the Save button")
@@ -109,16 +107,20 @@ public class AddEvent1_stepDefs {
         BrowserUtils.waitFor(2);
         new DashboardPage().AddEventPopUpPage_Save_button.click();
 
+
     }
 
     @Then("This value should not be blank message should be displayed after clicking on save button")
     public void thisValueShouldNotBeBlankMessageShouldBeDisplayedAfterClickingOnSaveButton() {
-
-        BrowserUtils.waitFor(2);
-        String actualAlertMessage = new DashboardPage().AddEventPopUpPage_This_value_should_not_be_blank_message.getText();
+        BrowserUtils.waitFor(3);
+        String actualAlertMessage = new DashboardPage().CalendarEventSavedAlertMessage.getText();
+        System.out.println("actualAlertMessage = " + actualAlertMessage);
         String expectedAlertMessage = "This value should not be blank.";
-        Assert.assertEquals("Message is not displayed", expectedAlertMessage, actualAlertMessage);
+        Assert.assertEquals("Expected alert message is not displayed", expectedAlertMessage, actualAlertMessage);
+
     }
+
+
 }
 
 

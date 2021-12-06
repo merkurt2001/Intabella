@@ -36,6 +36,9 @@ public class GeneralInfoPage extends BasePage{
     @FindBy(xpath ="//table/tbody/tr[1]")
     public WebElement TableFirstRow;
 
+    @FindBy(css = ".btn.ok.btn-danger")
+    public WebElement yesDeletebutton;
+
 
     public void NavGeneralInformationPage(){
         BrowserUtils.waitFor(5);

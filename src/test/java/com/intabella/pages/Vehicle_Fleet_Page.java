@@ -3,6 +3,7 @@ package com.intabella.pages;
 import com.intabella.utilities.BrowserUtils;
 import com.intabella.utilities.Driver;
 import io.cucumber.java.eo.Se;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -67,9 +68,6 @@ public class Vehicle_Fleet_Page extends BasePage {
     @FindBy(xpath = "//table[@class='grid table-hover table table-bordered table-condensed']//th")
     public List<WebElement> tableRows;
 
-    @FindBy(xpath = "//tbody/tr[1]/td[20]/div[1]/div[1]/a[1]")
-    public WebElement deleteSembol;
-
     @FindBy(css = ".btn.ok.btn-danger")
     public WebElement yesDeletebutton;
 
@@ -87,15 +85,5 @@ public class Vehicle_Fleet_Page extends BasePage {
         return BrowserUtils.getElementsText(Driver.get().findElements(By.xpath(locator)));
     }
 
-    public void hoverDots(){
-        DashboardPage dashboardPage = new DashboardPage();
-        dashboardPage.waitUntilLoaderScreenDisappear();
-        BrowserUtils.waitFor(5);
-        WebElement threeDots = Driver.get().findElement(By.xpath("//table[1]/tbody/tr[1]/td[20]"));
-        BrowserUtils.hover(threeDots);
-        BrowserUtils.waitFor(3);
-
-    }
-
-}
+  }
 

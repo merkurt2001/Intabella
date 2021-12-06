@@ -2,6 +2,7 @@ package com.intabella.pages;
 
 import com.intabella.utilities.BrowserUtils;
 import com.intabella.utilities.Driver;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -33,6 +34,32 @@ public abstract class  BasePage {
 
     @FindBy(linkText = "My User")
     public WebElement myUser;
+
+    @FindBy(linkText = "Vehicles")
+    public WebElement VehicleModule;
+
+    @FindBy(xpath = "(//*[@type='button'])[2]")
+    public WebElement closePopUpAddevent;
+
+    @FindBy(xpath = "//label[@class='required']")
+    public List<WebElement> compulsoryElements;
+
+    @FindBy(xpath = "//span[@class='validation-failed']/span/span")
+    public WebElement AddEventPopUpPage_This_value_should_not_be_blank_message;
+
+    @FindBy(name = "oro_calendar_event_form[title]")
+    public WebElement AddEventPopUpPage_Title_input_box;
+
+    @FindBy(name = "oro_calendar_event_form[organizerDisplayName]")
+    public WebElement AddEventPopUpPage_Organizer_display_name_input_box;
+
+    @FindBy(xpath = "//button[@class='btn btn-primary']")
+    public WebElement AddEventPopUpPage_Save_button;
+
+    @FindBy(xpath = "//div[@id='flash-messages']/div/div")
+    public WebElement CalendarEventSavedAlertMessage;
+
+
 
     public BasePage() {
         PageFactory.initElements(Driver.get(), this);
@@ -76,7 +103,7 @@ public abstract class  BasePage {
      */
     public void waitUntilLoaderScreenDisappear() {
         try {
-            WebDriverWait wait = new WebDriverWait(Driver.get(), 5);
+            WebDriverWait wait = new WebDriverWait(Driver.get(), 10);
             wait.until(ExpectedConditions.invisibilityOf(loaderMask));
         } catch (Exception e) {
             e.printStackTrace();
@@ -89,8 +116,6 @@ public abstract class  BasePage {
         BrowserUtils.waitForVisibility(userName, 5);
         return userName.getText();
     }
-
-
 
     public void logOut(){
         BrowserUtils.waitFor(2);
@@ -112,9 +137,63 @@ public abstract class  BasePage {
      * @param tab
      * @param module
      */
+    public void navigateToModule(String tab, String module, String UserType) {
+        String driver = "driver";
+        String slMng = "sales manager";
+        String stMng = "store manager";
+
+        if (driver.equals(UserType)) {
+            String tabLocator = "//span[normalize-space()='" + tab + "' and contains(@class, 'title title-level-1')]";
+            String moduleLocator = "//span[@class='title title-level-2']";
+            try {
+                BrowserUtils.waitForClickablility(By.xpath(tabLocator), 5);
+                WebElement tabElement = Driver.get().findElement(By.xpath(tabLocator));
+                new Actions(Driver.get()).moveToElement(tabElement).pause(200).doubleClick(tabElement).build().perform();
+            } catch (Exception e) {
+                BrowserUtils.waitForStaleElement(Driver.get().findElement(By.xpath(moduleLocator)));
+                BrowserUtils.clickWithWait(By.xpath(tabLocator), 5);
+            }
+            try {
+                BrowserUtils.waitForPresenceOfElement(By.xpath(moduleLocator), 5);
+                BrowserUtils.waitForVisibility(By.xpath(moduleLocator), 5);
+                BrowserUtils.scrollToElement(Driver.get().findElement(By.xpath(moduleLocator)));
+                Driver.get().findElement(By.xpath(moduleLocator)).click();
+            } catch (Exception e) {
+            BrowserUtils.waitForStaleElement(Driver.get().findElement(By.xpath(moduleLocator)));
+                BrowserUtils.clickWithTimeOut(Driver.get().findElement(By.xpath(moduleLocator)), 5);
+            }
+        }else if (slMng.equals(UserType) || stMng.equals(UserType)){
+
+//            boolean Xbutton = closePopUpAddevent.isDisplayed();
+//
+//            if(Xbutton){
+//                closePopUpAddevent.click();
+//            }
+
+
+            String tabLocator = "//span[normalize-space()='" + tab + "' and contains(@class, 'title title-level-1')]";
+            String moduleLocator = "//span[normalize-space()='" + module + "' and contains(@class, 'title title-level-2')]";
+            try {
+                BrowserUtils.waitForClickablility(By.xpath(tabLocator), 5);
+                WebElement tabElement = Driver.get().findElement(By.xpath(tabLocator));
+                new Actions(Driver.get()).moveToElement(tabElement).pause(200).doubleClick(tabElement).build().perform();
+            } catch (Exception e) {
+                BrowserUtils.clickWithWait(By.xpath(tabLocator), 5);
+            }
+            try {
+                BrowserUtils.waitForPresenceOfElement(By.xpath(moduleLocator), 5);
+                BrowserUtils.waitForVisibility(By.xpath(moduleLocator), 5);
+                BrowserUtils.scrollToElement(Driver.get().findElement(By.xpath(moduleLocator)));
+                Driver.get().findElement(By.xpath(moduleLocator)).click();
+            } catch (Exception e) {
+//            BrowserUtils.waitForStaleElement(Driver.get().findElement(By.xpath(moduleLocator)));
+                BrowserUtils.clickWithTimeOut(Driver.get().findElement(By.xpath(moduleLocator)),  5);
+            }
+        }
+    }
     public void navigateToModule(String tab, String module) {
         String tabLocator = "//span[normalize-space()='" + tab + "' and contains(@class, 'title title-level-1')]";
-        String moduleLocator = "//*[@class='title title-level-2']";
+        String moduleLocator = "//span[normalize-space()='" + module + "' and contains(@class, 'title title-level-2')]";
         try {
             BrowserUtils.waitForClickablility(By.xpath(tabLocator), 5);
             WebElement tabElement = Driver.get().findElement(By.xpath(tabLocator));

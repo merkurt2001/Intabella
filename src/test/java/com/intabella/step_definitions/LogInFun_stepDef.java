@@ -21,6 +21,13 @@ public class LogInFun_stepDef {
 
         String url = ConfigurationReader.get("url");
         Driver.get().get(url);
+        Driver.get().manage().window().maximize();
+    }
+
+    @Given("the user logged in as {string}")
+    public void the_user_logged_in_as(String userType) {
+
+        new LoginPage().logInAsdifferntUser(userType);
     }
 
     @When("the {string} enters the username {string} and password {string} information")

@@ -50,6 +50,25 @@ public abstract class  BasePage {
     }
 
 
+
+    public void waitUntilElementClickable(String xpath){
+        try{
+            WebDriverWait wait = new WebDriverWait(Driver.get(), 5);
+            wait.until(ExpectedConditions.elementToBeClickable(Driver.get().findElement(By.xpath(xpath))));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void waitUntilElementAppear(String xpath){
+        try{
+            WebDriverWait wait = new WebDriverWait(Driver.get(), 5);
+            wait.until(ExpectedConditions.visibilityOf(Driver.get().findElement(By.xpath(xpath))));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Waits until loader screen present. If loader screen will not pop up at all,
      * NoSuchElementException will be handled  bu try/catch block

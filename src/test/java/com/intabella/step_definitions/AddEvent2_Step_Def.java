@@ -47,13 +47,13 @@ public class AddEvent2_Step_Def {
     @Then("the user clicks the Repeats dropdown menu")
     public void the_user_clicks_the_Repeats_dropdown_menu() {
 
-        new Add_Event_2().RepeatDropDown();
+        new Add_Event_2().RepeatBox();
     }
 
     @Then("the user checks {string}")
     public void the_user_checks(String RepeatDropDown) {
 
-        new Add_Event_2().RepeatDropDown();
+        new Add_Event_2().RepeatDropDown(RepeatDropDown);
     }
 
     @Given("the user clicks on Ends button")
@@ -63,7 +63,7 @@ public class AddEvent2_Step_Def {
     }
 
     @Then("the user checks if {string} are clickable")
-    public void the_user_checks_if_are_clickable(String string) {
+    public void the_user_checks_if_are_clickable(String endingOptions) {
 
         new Add_Event_2().EndingOption();
     }

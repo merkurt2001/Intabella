@@ -1,7 +1,5 @@
 package com.intabella.step_definitions;
 
-import com.intabella.pages.DashboardPage;
-import com.intabella.pages.GeneralInfoPage;
 import com.intabella.utilities.BrowserUtils;
 import com.intabella.utilities.Pages;
 import io.cucumber.java.en.Given;
@@ -18,9 +16,6 @@ public class VehicleGeneralInfo_step_def {
             pages.dashboardPage().waitUntilLoaderScreenDisappear();
             pages.dashboardPage().navigateToModule(tab, module, UserType);
             BrowserUtils.waitFor(4);
-
-
-
     }
 
     @Given("the user is on the General Information page")

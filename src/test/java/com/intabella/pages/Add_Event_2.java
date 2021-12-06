@@ -6,7 +6,9 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Add_Event_2 extends BasePage {
@@ -19,7 +21,7 @@ public class Add_Event_2 extends BasePage {
     @FindBy(xpath = "//i[@class='fa-clock-o hide-text']")
     public WebElement AddEventButton;
 
-    @FindBy(id = "ui-id-2")
+    @FindBy(xpath = "//span[@class='ui-dialog-title']")
     public WebElement AddEventTitle;
 
     @FindBy(xpath = "(//input[@type='checkbox'])[2]")
@@ -54,8 +56,9 @@ public class Add_Event_2 extends BasePage {
     }
 
     public void clicksOnAddEventEventPopUp(){
-        BrowserUtils.waitFor(5);
+        BrowserUtils.waitFor(3);
         AddEventButton.click();
+        BrowserUtils.waitFor(3);
         Assert.assertEquals("Add Event",AddEventTitle.getText());
 
     }
@@ -81,15 +84,25 @@ public class Add_Event_2 extends BasePage {
     public void RepeatBox(){
         BrowserUtils.waitFor(5);
         AddEventButton.click();
+        BrowserUtils.waitFor(3);
         RepeatBox.click();
-        Assert.assertTrue("should be selected", RepeatBox.isSelected());
+//        Assert.assertTrue("should be selected", RepeatBox.isSelected());
     }
-    public void RepeatDropDown(){
-        AddEventButton.click();
-        RepeatBox.click();
-        RepeatDropDown.click();
-        Assert.assertTrue("Repeat dropdown should be displayed", RepeatDropDown.isDisplayed());
+    public void RepeatDropDown(String RepeatDropDown){
+        //Driver.get().findElement(By.xpath("(//div[@class='selector input-widget-select'])[1]")).click();
+        BrowserUtils.waitFor(3);
+       // RepeatBox.click();
+        BrowserUtils.waitFor(3);
+        Select dropDown = new Select(Driver.get().findElement(By.xpath("//*[@class='recurrence-repeats__select']")));
 
+        for (int i = 0; i < dropDown.getOptions().size(); i++) {
+
+
+        }
+
+
+
+//        BrowserUtils.waitFor(7);
     }
 
     public void EndingOption(){
@@ -102,6 +115,7 @@ public class Add_Event_2 extends BasePage {
 
     public void TitleBox(){
         AddEventButton.click();
+        BrowserUtils.waitFor(3);
         Assert.assertTrue("User can enter the desired event in the Title box", TitleBox.isEnabled());
     }
 

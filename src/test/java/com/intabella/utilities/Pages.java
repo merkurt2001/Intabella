@@ -8,7 +8,8 @@ public class Pages {
 
     GeneralInfoPage generalInfoPage = new GeneralInfoPage();
     DashboardPage dashboardPage = new DashboardPage();
-VehicleTableArrangementPage vehicleTableArrangementPage=new VehicleTableArrangementPage();
+    VehicleTableArrangementPage vehicleTableArrangementPage=new VehicleTableArrangementPage();
+
     public GeneralInfoPage generalInfoPage(){
         if (generalInfoPage == null) {
             generalInfoPage = new GeneralInfoPage();

@@ -58,9 +58,10 @@ Feature: Add Event-1
       And the user navigates to "Fleet" "Vehicles"
       And the user clicks on the first row in the list
       And the user clicks on the Add Event button
-      And the user fills in the compulsory fields with some inputs and and leave some fields empty
+      And the user fills in only Title* input box and leaves the rest empty
       And the user clicks on the Save button
       Then This value should not be blank message should be displayed after clicking on save button
+
 
 
 

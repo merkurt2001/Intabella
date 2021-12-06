@@ -10,19 +10,19 @@ Feature: Add Event 2
   Scenario:1- User can access the "Add Event" page from the "General Information" page
   (by clicking on any vehicle/row under Fleet-Vehicle module)
     Given the user see the Add Event button at the upper right most corner
-  @morning
+
   Scenario:2- After clicking on "Add event" button, "Add Event" page should pop up.
     Given the user clicks on the Add Event button and Add Event pop up
 
   Scenario:3- User can mark the event with any colour
     Given the user clicks any desired colour in the Color selection
-  @rrapi
+
   Scenario:  4- User can mark it as an "All-day event"
     Given the user clicks the All-day event box
 
-  @MAY
+  @morning
   Scenario Outline: 5A- User can repeat the action by specifying occurrence periods
-    Given the user clicks on the Repeat box
+   # Given the user clicks on the Repeat box
     Then the user clicks the Repeats dropdown menu
     Then the user checks "<Repeat options>"
 
@@ -45,7 +45,7 @@ Feature: Add Event 2
       | By             |
 
   Scenario: 6- All Users can see all events in the General information page
-    Given the user enters the desired event in the "Title" box
+    Given the user enters the desired event in the Title box
     Then the user fills in the Description box with a brief explanation regarding the event
     Then the user clicks on the Repeat box
     Then the user clicks on Ends button

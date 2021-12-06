@@ -99,7 +99,7 @@ public class GeneralInfoPage extends BasePage{
 
         BrowserUtils.waitFor(3);
 
-        for (int i = 23; i <= AllTableRow.size(); i++) {
+        for (int i = 1; i <= AllTableRow.size(); i++) {
 
             WebElement row1 = Driver.get().findElement(By.xpath("//table/tbody/tr[" + i + "]"));
             row1.click();
@@ -147,7 +147,7 @@ public class GeneralInfoPage extends BasePage{
                 allInfoRow.add(rowCellInfo.get(j).getText());
             }
 
-            Driver.get().findElement(By.xpath("//table/tbody/tr["+i+"]/td")).click();
+            BrowserUtils.doubleClick(Driver.get().findElement(By.xpath("//table/tbody/tr["+i+"]/td")));
 
             new DashboardPage().waitUntilLoaderScreenDisappear();
             BrowserUtils.waitFor(3);

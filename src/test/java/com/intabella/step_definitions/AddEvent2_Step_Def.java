@@ -35,9 +35,9 @@ public class AddEvent2_Step_Def {
     @Then("the user clicks the All-day event box")
     public void the_user_clicks_the_All_day_event_box() {
 
-           new Add_Event_2().AlldayEventCheck();
+        new Add_Event_2().AlldayEventCheck();
 
-        }
+    }
     @Given("the user clicks on the Repeat box")
     public void the_user_clicks_on_the_Repeat_box() {
 
@@ -47,42 +47,44 @@ public class AddEvent2_Step_Def {
     @Then("the user clicks the Repeats dropdown menu")
     public void the_user_clicks_the_Repeats_dropdown_menu() {
 
-        new Add_Event_2().RepeatDropDown();
+        new Add_Event_2().RepeatBox();
     }
 
     @Then("the user checks {string}")
-    public void the_user_checks(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void the_user_checks(String RepeatDropDown) {
+
+        new Add_Event_2().RepeatDropDown(RepeatDropDown);
     }
 
     @Given("the user clicks on Ends button")
     public void the_user_clicks_on_Ends_button() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        new Add_Event_2().EndingOption();
     }
 
     @Then("the user checks if {string} are clickable")
-    public void the_user_checks_if_are_clickable(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void the_user_checks_if_are_clickable(String endingOptions) {
+
+        new Add_Event_2().EndingOption();
     }
 
-    @Given("the user enters the desired event in the {string} box")
-    public void the_user_enters_the_desired_event_in_the_box(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @Given("the user enters the desired event in the Title box")
+    public void the_user_enters_the_desired_event_in_the_Title_box() {
+
+        new Add_Event_2().TitleBox();
     }
 
     @Then("the user fills in the Description box with a brief explanation regarding the event")
     public void the_user_fills_in_the_Description_box_with_a_brief_explanation_regarding_the_event() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        new Add_Event_2().DescriptionBox();
     }
 
     @Then("the user clicks on the Save icon")
     public void the_user_clicks_on_the_Save_icon() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        new Add_Event_2().SaveButton();
     }
-    }
+
+
+}

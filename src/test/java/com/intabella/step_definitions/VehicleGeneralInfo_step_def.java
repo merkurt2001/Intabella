@@ -1,7 +1,5 @@
 package com.intabella.step_definitions;
 
-import com.intabella.pages.DashboardPage;
-import com.intabella.pages.GeneralInfoPage;
 import com.intabella.utilities.BrowserUtils;
 import com.intabella.utilities.Pages;
 import io.cucumber.java.en.Given;
@@ -14,10 +12,10 @@ public class VehicleGeneralInfo_step_def {
 
     @Given("the user click on the {string} tab {string} module as user {string}")
     public void the_user_click_on_the_tab_module_as_user(String tab, String module, String UserType) {
-        pages.dashboardPage().waitUntilLoaderScreenDisappear();
-        pages.dashboardPage().navigateToModule(tab, module, UserType);
-        BrowserUtils.waitFor(4);
 
+            pages.dashboardPage().waitUntilLoaderScreenDisappear();
+            pages.dashboardPage().navigateToModule(tab, module, UserType);
+            BrowserUtils.waitFor(4);
     }
 
     @Given("the user is on the General Information page")

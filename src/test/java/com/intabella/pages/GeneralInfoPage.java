@@ -158,7 +158,7 @@ public class GeneralInfoPage extends BasePage{
 
                 Driver.get().findElement(By.xpath("//table/tbody/tr[" + i + "]")).click();
 
-                new DashboardPage().waitUntilLoaderScreenDisappear();
+                pages.dashboardPage().waitUntilLoaderScreenDisappear();
                 BrowserUtils.waitFor(3);
 
                 for (int j = 0; j < ListOfGeneralInfoPageRowInfo.size() - 3; j++) {

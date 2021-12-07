@@ -30,7 +30,7 @@ public class GeneralFiltersMenuPage {
         BrowserUtils.waitFor(3);
         String expectedText = "action btn mode-icon-only";
 
-        System.out.println("btn_Filter.getAttribute(\"class\") = " + btn_Filter.getAttribute("class"));
+       // System.out.println("btn_Filter.getAttribute() = " + btn_Filter.getAttribute("class"));
 
         Assert.assertEquals(expectedText, btn_Filter.getAttribute("class") );
 

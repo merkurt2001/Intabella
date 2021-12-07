@@ -61,7 +61,7 @@ Feature: Vehicle General Information
 	Scenario Outline: Information should be the same as on General Information and Fleet-Vehicle page <userType>
 		When the "<userType>" enters the username "<username>" and password "<password>" information
 		And the user click on the "Fleet" tab "Vehicles" module as user "<userType>"
-		Then information should be the same
+		Then information should be the same "<userType>"
 		Examples:
 			| userType      | username        | password    |
 			| driver        | user1           | UserUser123 |

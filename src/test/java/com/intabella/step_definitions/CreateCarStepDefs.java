@@ -10,7 +10,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -18,7 +17,6 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
-import com.intabella.utilities.ExcelUtil;
 
 import java.util.List;
 import java.util.Map;

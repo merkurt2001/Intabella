@@ -3,7 +3,8 @@ Feature: Filter Functions
   Background:
     Given the user is on the login page
     And the user logged in as "sales manager"
-    And the user click on the "Fleet" tab "Vehicles" module as user "sales manager"
+    #And the user click on the "Fleet" tab "Vehicles" module as user "sales manager"
+
 
   @INN-1044
   Scenario: Manage Filter button should be hidden by default
@@ -21,7 +22,7 @@ Feature: Filter Functions
     Then the user can select the "<filterName>" under manage filters dropdown
     Then the user can apply filters for "<filterName>" user
     Examples:
-      | filterName        |
+      | filterName     |
       | License Plate  |
       | Tags           |
       | Driver         |
@@ -38,6 +39,7 @@ Feature: Filter Functions
     Examples:
       | filterName |
       | Location   |
+      | Tags       |
 
     #not very best solution???
   @INN-1048

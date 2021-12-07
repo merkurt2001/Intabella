@@ -1,16 +1,15 @@
 package com.intabella.utilities;
 
-import com.intabella.pages.DashboardPage;
-import com.intabella.pages.GeneralInfoPage;
-import com.intabella.pages.LoginPage;
-import com.intabella.pages.VehicleTableArrangementPage;
+import com.intabella.pages.*;
 
 public class Pages {
-
+    GeneralFiltersMenuPage generalFiltersMenuPage = new GeneralFiltersMenuPage();
     GeneralInfoPage generalInfoPage = new GeneralInfoPage();
     DashboardPage dashboardPage = new DashboardPage();
     VehicleTableArrangementPage vehicleTableArrangementPage=new VehicleTableArrangementPage();
     LoginPage loginPage = new LoginPage();
+
+
 
     public LoginPage loginPage(){
         if (loginPage == null){
@@ -38,6 +37,13 @@ public class Pages {
             vehicleTableArrangementPage = new VehicleTableArrangementPage();
         }
         return vehicleTableArrangementPage;
+    }
+
+    public GeneralFiltersMenuPage generalFiltersMenuPage(){
+        if (generalFiltersMenuPage == null){
+            generalFiltersMenuPage = new GeneralFiltersMenuPage();
+        }
+        return generalFiltersMenuPage;
     }
 
 

@@ -39,9 +39,9 @@ public class AddEvent1_stepDefs {
 
     @And("the user clicks on the first row in the list")
     public void theUserClicksOnTheFirstRowInTheList() {
-        BrowserUtils.waitFor(3);
+        BrowserUtils.waitFor(4);
         new GeneralInfoPage().TableFirstRow.click();
-        BrowserUtils.waitFor(3);
+
     }
 
     @Then("the user should be able to see Add Event button displayed on the top right corner next to Delete button")

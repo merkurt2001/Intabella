@@ -48,10 +48,10 @@ public class VehicleGeneralInfo_step_def {
         pages.generalInfoPage().shouldNotHaveAddEventEditDeleteBtn();
     }
 
-    @Given("information should be the same")
-    public void information_should_be_the_same() {
+    @Given("information should be the same {string}")
+    public void information_should_be_the_same(String userType) {
 
-        pages.generalInfoPage().InfoShouldBeTheSame();
+        pages.generalInfoPage().InfoShouldBeTheSame(userType);
     }
 
 

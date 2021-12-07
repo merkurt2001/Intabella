@@ -2,6 +2,7 @@ package com.intabella.pages;
 
 import com.intabella.utilities.BrowserUtils;
 import com.intabella.utilities.Driver;
+import com.intabella.utilities.Pages;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -11,6 +12,8 @@ import org.openqa.selenium.support.FindBy;
 import java.util.*;
 
 public class GeneralInfoPage extends BasePage{
+
+    Pages pages = new Pages();
 
     @FindBy(xpath = "//table/tbody/tr")
     public List<WebElement> AllTableRow;
@@ -57,7 +60,7 @@ public class GeneralInfoPage extends BasePage{
             Assert.assertEquals("General Information",GeneralInfoPageSubtitle.getText());
             Driver.get().navigate().back();
         }
-        new LoginPage().logOutUser();
+        pages.loginPage().logOutUser();
     }
 
     public void clickEye(String userType){
@@ -77,7 +80,7 @@ public class GeneralInfoPage extends BasePage{
                 Assert.assertEquals("General Information",GeneralInfoPageSubtitle.getText());
                 Driver.get().navigate().back();
             }
-            new LoginPage().logOutUser();
+            pages.loginPage().logOutUser();
         }else {
 
             BrowserUtils.waitFor(3);
@@ -91,7 +94,7 @@ public class GeneralInfoPage extends BasePage{
                 Assert.assertEquals("General Information",GeneralInfoPageSubtitle.getText());
                 Driver.get().navigate().back();
             }
-            new LoginPage().logOutUser();
+            pages.loginPage().logOutUser();
         }
     }
 
@@ -111,7 +114,7 @@ public class GeneralInfoPage extends BasePage{
 
             Driver.get().navigate().back();
         }
-        new LoginPage().logOutUser();
+        pages.loginPage().logOutUser();
     }
 
     public void shouldNotHaveAddEventEditDeleteBtn(){
@@ -130,35 +133,69 @@ public class GeneralInfoPage extends BasePage{
 
             Driver.get().navigate().back();
         }
-        new LoginPage().logOutUser();
+        pages.loginPage().logOutUser();
     }
 
-    public void InfoShouldBeTheSame(){
+    public void InfoShouldBeTheSame(String userType){
 
-        BrowserUtils.waitFor(3);
+        String dr = "driver";
+        String slmn = "sales manager";
+        String stmn = "store manager";
 
-        List<String> allInfoRow = new ArrayList<>();
-        List<String> GIPInfoPage = new ArrayList<>();
+        if (dr.equals(userType)) {
 
-        for (int i = 1; i < AllTableRow.size(); i++) {
-
-            List<WebElement> rowCellInfo = Driver.get().findElements(By.xpath("//table/tbody/tr["+i+"]/td"));
-            for (int j = 0; j < rowCellInfo.size()-1; j++) {
-                allInfoRow.add(rowCellInfo.get(j).getText());
-            }
-
-            BrowserUtils.doubleClick(Driver.get().findElement(By.xpath("//table/tbody/tr["+i+"]/td")));
-
-            new DashboardPage().waitUntilLoaderScreenDisappear();
             BrowserUtils.waitFor(3);
 
-            for (int j = 0; j < ListOfGeneralInfoPageRowInfo.size()-3; j++) {
-                GIPInfoPage.add(ListOfGeneralInfoPageRowInfo.get(j).getText());
-            }
+            List<String> allInfoRow = new ArrayList<>();
+            List<String> GIPInfoPage = new ArrayList<>();
 
-            Assert.assertEquals(allInfoRow,GIPInfoPage);
-            Driver.get().navigate().back();
+            for (int i = 1; i < AllTableRow.size(); i++) {
+
+                List<WebElement> rowCellInfo = Driver.get().findElements(By.xpath("//table/tbody/tr[" + i + "]/td"));
+                for (int j = 0; j < rowCellInfo.size() - 1; j++) {
+                    allInfoRow.add(rowCellInfo.get(j).getText());
+                }
+
+                Driver.get().findElement(By.xpath("//table/tbody/tr[" + i + "]")).click();
+
+                new DashboardPage().waitUntilLoaderScreenDisappear();
+                BrowserUtils.waitFor(3);
+
+                for (int j = 0; j < ListOfGeneralInfoPageRowInfo.size() - 3; j++) {
+                    GIPInfoPage.add(ListOfGeneralInfoPageRowInfo.get(j).getText());
+                }
+
+                Assert.assertEquals(allInfoRow, GIPInfoPage);
+                Driver.get().navigate().back();
+            }
+            pages.loginPage().logOutUser();
+
+        }else if (slmn.equals(userType) || stmn.equals(userType)) {
+            BrowserUtils.waitFor(3);
+
+            List<String> allInfoRow = new ArrayList<>();
+            List<String> GIPInfoPage = new ArrayList<>();
+
+            for (int i = 1; i < AllTableRow.size(); i++) {
+
+                List<WebElement> rowCellInfo = Driver.get().findElements(By.xpath("//table/tbody/tr[" + i + "]/td"));
+                for (int j = 1; j < rowCellInfo.size() - 1; j++) {
+                    allInfoRow.add(rowCellInfo.get(j).getText());
+                }
+
+                Driver.get().findElement(By.xpath("//table/tbody/tr[" + i + "]")).click();
+
+                new DashboardPage().waitUntilLoaderScreenDisappear();
+                BrowserUtils.waitFor(3);
+
+                for (int j = 0; j < ListOfGeneralInfoPageRowInfo.size() - 3; j++) {
+                    GIPInfoPage.add(ListOfGeneralInfoPageRowInfo.get(j).getText());
+                }
+
+                Assert.assertEquals(allInfoRow, GIPInfoPage);
+                Driver.get().navigate().back();
+            }
+            pages.loginPage().logOutUser();
         }
-        new LoginPage().logOutUser();
     }
 }

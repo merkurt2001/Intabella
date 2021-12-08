@@ -1,4 +1,4 @@
-@morning
+
 Feature: Add Event 2
 
 #  @INN-1091
@@ -13,7 +13,7 @@ Feature: Add Event 2
   (by clicking on any vehicle/row under Fleet-Vehicle module)
     Given the user see the Add Event button at the upper right most corner
 
-  @INN-1094
+  @INN-1094 @morning
   Scenario:2- After clicking on "Add event" button, "Add Event" page should pop up.
     Given the user clicks on the Add Event button and Add Event pop up
 

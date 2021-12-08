@@ -13,7 +13,7 @@ import java.util.*;
 
 public class GeneralInfoPage extends BasePage{
 
-    Pages pages = new Pages();
+    //Pages pages = new Pages();
 
     @FindBy(xpath = "//table/tbody/tr")
     public List<WebElement> AllTableRow;
@@ -53,14 +53,15 @@ public class GeneralInfoPage extends BasePage{
 
         BrowserUtils.waitFor(3);
 
-        for (int i = 1; i <= AllTableRow.size(); i++) {
+        for (int i = 23; i <= AllTableRow.size(); i++) {
             WebElement row1 = Driver.get().findElement(By.xpath("//table/tbody/tr[" + i + "]"));
             row1.click();
             BrowserUtils.waitFor(5);
             Assert.assertEquals("General Information",GeneralInfoPageSubtitle.getText());
             Driver.get().navigate().back();
         }
-        pages.loginPage().logOutUser();
+        //pages.loginPage().logOutUser();
+        new LoginPage().logOutUser();
     }
 
     public void clickEye(String userType){
@@ -80,7 +81,8 @@ public class GeneralInfoPage extends BasePage{
                 Assert.assertEquals("General Information",GeneralInfoPageSubtitle.getText());
                 Driver.get().navigate().back();
             }
-            pages.loginPage().logOutUser();
+            //pages.loginPage().logOutUser();
+            new LoginPage().logOutUser();
         }else {
 
             BrowserUtils.waitFor(3);
@@ -94,7 +96,8 @@ public class GeneralInfoPage extends BasePage{
                 Assert.assertEquals("General Information",GeneralInfoPageSubtitle.getText());
                 Driver.get().navigate().back();
             }
-            pages.loginPage().logOutUser();
+            //pages.loginPage().logOutUser();
+            new LoginPage().logOutUser();
         }
     }
 
@@ -114,7 +117,8 @@ public class GeneralInfoPage extends BasePage{
 
             Driver.get().navigate().back();
         }
-        pages.loginPage().logOutUser();
+        //pages.loginPage().logOutUser();
+        new LoginPage().logOutUser();
     }
 
     public void shouldNotHaveAddEventEditDeleteBtn(){
@@ -133,7 +137,8 @@ public class GeneralInfoPage extends BasePage{
 
             Driver.get().navigate().back();
         }
-        pages.loginPage().logOutUser();
+        //pages.loginPage().logOutUser();
+        new LoginPage().logOutUser();
     }
 
     public void InfoShouldBeTheSame(String userType){
@@ -158,7 +163,8 @@ public class GeneralInfoPage extends BasePage{
 
                 Driver.get().findElement(By.xpath("//table/tbody/tr[" + i + "]")).click();
 
-                pages.dashboardPage().waitUntilLoaderScreenDisappear();
+                //pages.dashboardPage().waitUntilLoaderScreenDisappear();
+                new LoginPage().logOutUser();
                 BrowserUtils.waitFor(3);
 
                 for (int j = 0; j < ListOfGeneralInfoPageRowInfo.size() - 3; j++) {
@@ -168,7 +174,8 @@ public class GeneralInfoPage extends BasePage{
                 Assert.assertEquals(allInfoRow, GIPInfoPage);
                 Driver.get().navigate().back();
             }
-            pages.loginPage().logOutUser();
+            //pages.loginPage().logOutUser();
+            new LoginPage().logOutUser();
 
         }else if (slmn.equals(userType) || stmn.equals(userType)) {
             BrowserUtils.waitFor(3);
@@ -195,7 +202,8 @@ public class GeneralInfoPage extends BasePage{
                 Assert.assertEquals(allInfoRow, GIPInfoPage);
                 Driver.get().navigate().back();
             }
-            pages.loginPage().logOutUser();
+            //pages.loginPage().logOutUser();
+            new LoginPage().logOutUser();
         }
     }
 }

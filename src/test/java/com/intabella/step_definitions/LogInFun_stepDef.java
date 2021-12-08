@@ -21,6 +21,7 @@ public class LogInFun_stepDef {
 
         String url = ConfigurationReader.get("url");
         Driver.get().get(url);
+        Driver.get().manage().window().maximize();
     }
 
     @Given("the user logged in as {string}")

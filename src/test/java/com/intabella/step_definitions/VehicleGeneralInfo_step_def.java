@@ -2,25 +2,26 @@ package com.intabella.step_definitions;
 
 import com.intabella.pages.DashboardPage;
 import com.intabella.pages.GeneralInfoPage;
+import com.intabella.utilities.BrowserUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
 
 public class VehicleGeneralInfo_step_def {
 
-    @Given("the user is on the General Information page")
-    public void the_user_is_on_the_General_Information_page() {
-
-        new GeneralInfoPage().NavGeneralInformationPage();
-    }
-
-
     @Given("the user click on the {string} tab {string} module as user {string}")
     public void the_user_click_on_the_tab_module_as_user(String tab, String module, String UserType) {
         DashboardPage dashboardPage = new DashboardPage();
         dashboardPage.waitUntilLoaderScreenDisappear();
         dashboardPage.navigateToModule(tab,module,UserType);
+        BrowserUtils.waitFor(4);
 
+    }
+
+    @Given("the user is on the General Information page")
+    public void the_user_is_on_the_General_Information_page() {
+
+        new GeneralInfoPage().NavGeneralInformationPage();
     }
 
     @Given("the user should see the General Information by clicking on any vehicle row")

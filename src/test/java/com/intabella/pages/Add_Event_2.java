@@ -31,35 +31,42 @@ public class Add_Event_2 extends BasePage {
     public WebElement RepeatBox;
 
     @FindBy(xpath = "//*[@*='recurrence-repeats__select']")
-    public WebElement RepeatDropDown;
+    public WebElement RepeatDropDownDaily;
 
-    @FindBy (xpath = "(//*[@*='control-section-switcher'])[3]")
-    public WebElement EndingOption;
+    // @FindBy (xpath = "(//*[@*='control-section-switcher'])[3]")
+    //public WebElement EndsRadioBtnNever;
 
-    @FindBy (xpath = "(//*[@*='oro_calendar_event_form_title-uid-61ace574eb9ba'])[2]")
+
+    @FindBy(xpath = "(//input[@type='radio'])[3]")
+    public WebElement EndsRadioBtnNever;
+
+    @FindBy(xpath = "(//*[@*='oro_calendar_event_form_title-uid-61ace574eb9ba'])[2]")
     public WebElement TitleBox;
 
-    //@FindBy (xpath = "//input[@data-ftid='oro_calendar_event_form_title']")
-    //public WebElement TitleBoxFilled;
+    @FindBy(xpath = "//input[@data-ftid='oro_calendar_event_form_title']")
+    public WebElement TitleBoxFilled;
 
-    @FindBy (xpath = "//label[@*='oro_calendar_event_form_description-uid-61acf49ece961']")
+    @FindBy(xpath = "//body[@id='tinymce']")
     public WebElement DescriptionBox;
 
-    @FindBy (xpath = "//*[@*='btn btn-primary']")
+    @FindBy(xpath = "//*[@*='btn btn-primary']")
     public WebElement SaveButton;
 
+    @FindBy (xpath = "//div[@class='details']")
+    public WebElement CreatedEventActivity;
 
-    public void theUserSeeTheAddEventButton(){
+
+    public void theUserSeeTheAddEventButton() {
 
         BrowserUtils.waitFor(5);
-        Assert.assertEquals("Add Event",AddEventButton.getText());
+        Assert.assertEquals("Add Event", AddEventButton.getText());
     }
 
-    public void clicksOnAddEventEventPopUp(){
+    public void clicksOnAddEventEventPopUp() {
         BrowserUtils.waitFor(3);
         AddEventButton.click();
         BrowserUtils.waitFor(3);
-        Assert.assertEquals("Add Event",AddEventTitle.getText());
+        Assert.assertEquals("Add Event", AddEventTitle.getText());
 
     }
 
@@ -74,61 +81,66 @@ public class Add_Event_2 extends BasePage {
             Assert.assertTrue(colorSelection.isEnabled());
         }
     }
-    public void AlldayEventCheck(){
+
+    public void AlldayEventCheck() {
         BrowserUtils.waitFor(5);
         AddEventButton.click();
         AlldayEvent.click();
-        Assert.assertTrue("should be selected",AlldayEvent.isSelected());
+        Assert.assertTrue("should be selected", AlldayEvent.isSelected());
     }
 
-    public void RepeatBox(){
+
+    public void RepeatBox() {
         BrowserUtils.waitFor(5);
         AddEventButton.click();
         BrowserUtils.waitFor(3);
         RepeatBox.click();
-//        Assert.assertTrue("should be selected", RepeatBox.isSelected());
-    }
-    public void RepeatDropDown(String RepeatDropDown){
-        //Driver.get().findElement(By.xpath("(//div[@class='selector input-widget-select'])[1]")).click();
-        BrowserUtils.waitFor(3);
-       // RepeatBox.click();
-        BrowserUtils.waitFor(3);
-        Select dropDown = new Select(Driver.get().findElement(By.xpath("//*[@class='recurrence-repeats__select']")));
-
-        for (int i = 0; i < dropDown.getOptions().size(); i++) {
-
-
-        }
-
-
-
-//        BrowserUtils.waitFor(7);
+        Assert.assertTrue("should be selected", RepeatBox.isSelected());
     }
 
-    public void EndingOption(){
-        AddEventButton.click();
-        RepeatBox.click();
-        EndingOption.click();
-        Assert.assertTrue("Ending option is clickable", EndingOption.isEnabled());
-        Assert.assertTrue("Repeat ending option should be displayed", EndingOption.isDisplayed());
-    }
-
-    public void TitleBox(){
-        AddEventButton.click();
-        BrowserUtils.waitFor(3);
-        Assert.assertTrue("User can enter the desired event in the Title box", TitleBox.isEnabled());
-    }
-
-    public void DescriptionBox(){
-        AddEventButton.click();
-        Assert.assertTrue("User fills in the Description box with a brief explanation regarding the event",
-                DescriptionBox.isEnabled());
-    }
-
-    public void SaveButton(){
-        AddEventButton.click();
-        Assert.assertTrue("Save button is clickable", SaveButton.isEnabled());
-        SaveButton.click();
-    }
+//    public void RepeatDropDown(String RepeatDropDownDaily){
+//        //Driver.get().findElement(By.xpath("(//div[@class='selector input-widget-select'])[1]")).click();
+//        BrowserUtils.waitFor(3);
+//       // RepeatBox.click();
+//        BrowserUtils.waitFor(3);
+//        Select dropDown = new Select(Driver.get().findElement(By.xpath("//*[@class='recurrence-repeats__select']")));
+//
+//        for (int i = 0; i < dropDown.getOptions().size(); i++) {
+//
+//
+//
+//
+//        }
+//
+//
+//
+////        BrowserUtils.waitFor(7);
+//    }
+//
+//    public void EndsRadioBtnNever(){
+//        AddEventButton.click();
+//        RepeatBox.click();
+//        EndsRadioBtnNever.click();
+//        Assert.assertTrue("Ending option is clickable", EndsRadioBtnNever.isEnabled());
+//        //Assert.assertTrue("Repeat ending option should be displayed", EndsRadioBtnNever.isDisplayed());
+//    }
+//
+//    public void TitleBox(){
+//        AddEventButton.click();
+//        BrowserUtils.waitFor(3);
+//        Assert.assertTrue("User can enter the desired event in the Title box", TitleBox.isEnabled());
+//    }
+//
+//    public void DescriptionBox(){
+//        AddEventButton.click();
+//        Assert.assertTrue("User fills in the Description box with a brief explanation regarding the event",
+//                DescriptionBox.isEnabled());
+//    }
+//
+//    public void SaveButton(){
+//        AddEventButton.click();
+//        Assert.assertTrue("Save button is clickable", SaveButton.isEnabled());
+//        SaveButton.click();
+//    }
 
 }

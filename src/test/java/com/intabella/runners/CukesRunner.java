@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
         glue = "com/intabella/step_definitions",
         dryRun = false,
         tags = "@INN-1083"
+
 )
 public class CukesRunner {
 

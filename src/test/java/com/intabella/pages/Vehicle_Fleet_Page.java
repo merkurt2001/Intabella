@@ -23,7 +23,7 @@ public class Vehicle_Fleet_Page extends BasePage {
     @FindBy(xpath = "//span[normalize-space()='Vehicles']")
     public WebElement moduleLocator;
 
-    @FindBy(xpath = "//label[normalize-space()='of 5 |']")
+    @FindBy(xpath = "/html[1]/body[1]/div[2]/div[2]/div[1]/div[2]/div[3]/div[3]/div[2]/div[1]/div[1]/div[4]/label[2]")
     public WebElement numberOfPage;
 
     @FindBy(xpath = "//i[@class='fa-chevron-right hide-text']")

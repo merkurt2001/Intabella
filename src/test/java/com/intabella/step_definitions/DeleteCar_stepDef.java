@@ -22,15 +22,15 @@ public class DeleteCar_stepDef {
 
     @Then("the {string} should see delete button by hovering over end of the page")
     public void theShouldSeeDeleteButtonByHoveringOverEndOfThePage(String userType) {
-        if (userType=="sales manager" || userType=="store manager") {
+        if (userType.contains("sales manager") || userType.contains("store manager")) {
 
             BrowserUtils.waitFor(3);
             WebElement threeDots = Driver.get().findElement(By.xpath("//table/tbody/tr[1]/td[21]"));
             Actions actions = new Actions(Driver.get());
             actions.moveToElement(threeDots).perform();
             BrowserUtils.waitFor(3);
-            WebElement deleteButton = Driver.get().
-                    findElement(By.xpath("//ul[@class='dropdown-menu dropdown-menu__action-cell launchers-dropdown-menu detach dropdown-menu__floating']//i[@class='fa-trash-o hide-text']"));
+            WebElement deleteButton = Driver.get().findElement(By.xpath("//i[@class='fa-trash-o hide-text']"));
+            BrowserUtils.waitFor(3);
             boolean deleteButnDisplayed = deleteButton.isDisplayed();
             Assert.assertTrue(deleteButnDisplayed);
         }else {
@@ -39,8 +39,7 @@ public class DeleteCar_stepDef {
             Actions actions = new Actions(Driver.get());
             actions.moveToElement(threeDots).perform();
             BrowserUtils.waitFor(3);
-            WebElement deleteButton = Driver.get().
-                    findElement(By.xpath("//ul[@class='dropdown-menu dropdown-menu__action-cell launchers-dropdown-menu detach dropdown-menu__floating']//i[@class='fa-trash-o hide-text']"));
+            WebElement deleteButton = Driver.get().findElement(By.xpath("//i[@class='fa-trash-o hide-text']"));
             boolean deleteButnDisplayed = deleteButton.isDisplayed();
             Assert.assertTrue(deleteButnDisplayed);
         }

@@ -35,6 +35,7 @@ public class AddEvent1_stepDefs {
         String expectedSubtitle = "General Information";
         Assert.assertEquals("Subtitle does not match", expectedSubtitle, actualSubtitle);
 
+
     }
 
     @And("the user clicks on the first row in the list")

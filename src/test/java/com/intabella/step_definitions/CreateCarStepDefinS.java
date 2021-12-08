@@ -6,6 +6,7 @@ import com.intabella.pages.LoginPage;
 import com.intabella.pages.CreateCarPage;
 import com.intabella.utilities.BrowserUtils;
 import com.intabella.utilities.ConfigurationReader;
+import com.intabella.utilities.newCarInfoReader;
 import com.intabella.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -24,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.List;
 import java.util.Map;
 
-public class CreateCarStepDefs {
+public class CreateCarStepDefinS {
 
     CreateCarPage createCarPage = new CreateCarPage();
 

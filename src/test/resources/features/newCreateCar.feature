@@ -1,7 +1,7 @@
 #Store Manager should be able to "Create Car" with valid credentials and Form data structure should be as below ("Entity Saved" message should be displayed ONLY after successful saving with valid credentials.
 Feature: As a user (store manager) I should be able to create a vehicle
 
-  @createCar
+  @newCreateCar
   Scenario Outline:
     Given the user goes to the login page
     When the user logged in as <username> and <password>

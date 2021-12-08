@@ -23,7 +23,7 @@ public class VehicleTableView_StepDefinitions {
 
     @Given("the user can see the total number of pages")
     public void theUserCanSeeTheTotalNumberOfPages() {
-        Assert.assertEquals("Of 5 |",fleetPage.numberOfPage.getText());
+        Assert.assertEquals("Of 4 |",fleetPage.numberOfPage.getText());
     }
 
     @Given("that users can navigate back and forth")

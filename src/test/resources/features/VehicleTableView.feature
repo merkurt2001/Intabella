@@ -1,4 +1,4 @@
-@INN-1033 @wipp
+@INN-1033
 Feature: Vehicle Table View
 
 	Background:
@@ -10,7 +10,7 @@ Feature: Vehicle Table View
 	@INN-1027
 	Scenario: the user can see all vehicle information under the Fleet-Vehicles module
 		Given the user can see the vehicle information page
-	@INN-1029
+	@INN-1029 @wipp
 	Scenario: Users can see the total number of pages
 		Given the user can see the total number of pages
 	@INN-1030

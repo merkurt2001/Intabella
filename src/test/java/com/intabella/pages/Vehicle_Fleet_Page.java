@@ -3,6 +3,7 @@ package com.intabella.pages;
 import com.intabella.utilities.BrowserUtils;
 import com.intabella.utilities.Driver;
 import io.cucumber.java.eo.Se;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -67,6 +68,12 @@ public class Vehicle_Fleet_Page extends BasePage {
     @FindBy(xpath = "//table[@class='grid table-hover table table-bordered table-condensed']//th")
     public List<WebElement> tableRows;
 
+    @FindBy(css = ".btn.ok.btn-danger")
+    public WebElement yesDeletebutton;
+
+    @FindBy(className = "oro-subtitle")
+    public WebElement AllCarsAsSubTitle;
+
     public int getIndexNumberRow(String row) {
         List<String> rowNames = BrowserUtils.getElementsText(tableRows);
         return rowNames.indexOf(row.toUpperCase());
@@ -78,5 +85,5 @@ public class Vehicle_Fleet_Page extends BasePage {
         return BrowserUtils.getElementsText(Driver.get().findElements(By.xpath(locator)));
     }
 
-}
+  }
 
